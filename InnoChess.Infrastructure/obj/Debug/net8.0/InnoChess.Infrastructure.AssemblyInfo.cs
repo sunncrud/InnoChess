@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("InnoChess.Infrastructure")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c417300526c09c43dc138f149983e0a04f1ce68b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+84b9adc9ae7517fcf9cafebee108e8ad51976759")]
 [assembly: System.Reflection.AssemblyProductAttribute("InnoChess.Infrastructure")]
 [assembly: System.Reflection.AssemblyTitleAttribute("InnoChess.Infrastructure")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

@@ -1,14 +1,8 @@
-C:\Users\user\source\repos\InnoChess\InnoChess.Domain\bin\Debug\net8.0\InnoChess.Presentation.deps.json
-C:\Users\user\source\repos\InnoChess\InnoChess.Domain\bin\Debug\net8.0\InnoChess.Presentation.runtimeconfig.json
 C:\Users\user\source\repos\InnoChess\InnoChess.Domain\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\user\source\repos\InnoChess\InnoChess.Domain\bin\Debug\net8.0\appsettings.json
-C:\Users\user\source\repos\InnoChess\InnoChess.Domain\bin\Debug\net8.0\InnoChess.Presentation.staticwebassets.endpoints.json
-C:\Users\user\source\repos\InnoChess\InnoChess.Domain\bin\Debug\net8.0\InnoChess.Presentation.exe
 C:\Users\user\source\repos\InnoChess\InnoChess.Domain\bin\Debug\net8.0\InnoChess.Domain.deps.json
 C:\Users\user\source\repos\InnoChess\InnoChess.Domain\bin\Debug\net8.0\InnoChess.Domain.dll
 C:\Users\user\source\repos\InnoChess\InnoChess.Domain\bin\Debug\net8.0\InnoChess.Domain.pdb
-C:\Users\user\source\repos\InnoChess\InnoChess.Domain\bin\Debug\net8.0\InnoChess.Presentation.dll
-C:\Users\user\source\repos\InnoChess\InnoChess.Domain\bin\Debug\net8.0\InnoChess.Presentation.pdb
 C:\Users\user\source\repos\InnoChess\InnoChess.Domain\obj\Debug\net8.0\InnoChess.Domain.csproj.AssemblyReference.cache
 C:\Users\user\source\repos\InnoChess\InnoChess.Domain\obj\Debug\net8.0\InnoChess.Domain.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\user\source\repos\InnoChess\InnoChess.Domain\obj\Debug\net8.0\InnoChess.Domain.AssemblyInfoInputs.cache
@@ -20,3 +14,9 @@ C:\Users\user\source\repos\InnoChess\InnoChess.Domain\obj\Debug\net8.0\InnoChess
 C:\Users\user\source\repos\InnoChess\InnoChess.Domain\obj\Debug\net8.0\refint\InnoChess.Domain.dll
 C:\Users\user\source\repos\InnoChess\InnoChess.Domain\obj\Debug\net8.0\InnoChess.Domain.pdb
 C:\Users\user\source\repos\InnoChess\InnoChess.Domain\obj\Debug\net8.0\ref\InnoChess.Domain.dll
+C:\Users\user\source\repos\InnoChess\InnoChess.Domain\bin\Debug\net8.0\InnoChess.deps.json
+C:\Users\user\source\repos\InnoChess\InnoChess.Domain\bin\Debug\net8.0\InnoChess.runtimeconfig.json
+C:\Users\user\source\repos\InnoChess\InnoChess.Domain\bin\Debug\net8.0\InnoChess.staticwebassets.endpoints.json
+C:\Users\user\source\repos\InnoChess\InnoChess.Domain\bin\Debug\net8.0\InnoChess.exe
+C:\Users\user\source\repos\InnoChess\InnoChess.Domain\bin\Debug\net8.0\InnoChess.dll
+C:\Users\user\source\repos\InnoChess\InnoChess.Domain\bin\Debug\net8.0\InnoChess.pdb

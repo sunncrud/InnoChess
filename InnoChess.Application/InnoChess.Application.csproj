@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\InnoChess\InnoChess.Presentation.csproj" />
+    <ProjectReference Include="..\InnoChess.Domain\InnoChess.Domain.csproj" />
   </ItemGroup>
 
 </Project>

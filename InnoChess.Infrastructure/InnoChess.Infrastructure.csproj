@@ -11,8 +11,4 @@
     <Folder Include="Services\" />
   </ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\InnoChess\InnoChess.Presentation.csproj" />
-  </ItemGroup>
-
 </Project>

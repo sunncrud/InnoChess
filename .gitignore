@@ -1,0 +1,21 @@
+# Ignore node modules
+node_modules/
+
+# Ignore build artifacts
+dist/
+*.log
+
+# Ignore environment configs
+.env
+
+# Build output
+bin/
+obj/
+*.log
+
+# User-specific settings & VS folders
+.vs/
+*.user
+*.suo
+
+

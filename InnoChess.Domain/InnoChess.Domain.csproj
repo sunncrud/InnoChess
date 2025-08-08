@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\InnoChess\InnoChess.Presentation.csproj" />
-  </ItemGroup>
-
 </Project>
