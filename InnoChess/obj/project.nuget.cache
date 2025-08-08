@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Cp/4L+b1rDg=",
+  "dgSpecHash": "nNIFglwWj/M=",
   "success": true,
-  "projectFilePath": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\InnoChess.csproj",
+  "projectFilePath": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\InnoChess.Presentation.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\microsoft.openapi\\1.6.14\\microsoft.openapi.1.6.14.nupkg.sha512",

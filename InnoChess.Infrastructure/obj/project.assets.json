@@ -87,17 +87,17 @@
           "Microsoft.AspNetCore.App"
         ]
       },
-      "InnoChess/1.0.0": {
+      "InnoChess.Presentation/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Swashbuckle.AspNetCore": "6.6.2"
         },
         "compile": {
-          "bin/placeholder/InnoChess.dll": {}
+          "bin/placeholder/InnoChess.Presentation.dll": {}
         },
         "runtime": {
-          "bin/placeholder/InnoChess.dll": {}
+          "bin/placeholder/InnoChess.Presentation.dll": {}
         },
         "frameworkReferences": [
           "Microsoft.AspNetCore.App"
@@ -454,15 +454,15 @@
         "swashbuckle.aspnetcore.swaggerui.nuspec"
       ]
     },
-    "InnoChess/1.0.0": {
+    "InnoChess.Presentation/1.0.0": {
       "type": "project",
-      "path": "../InnoChess/InnoChess.csproj",
-      "msbuildProject": "../InnoChess/InnoChess.csproj"
+      "path": "../InnoChess/InnoChess.Presentation.csproj",
+      "msbuildProject": "../InnoChess/InnoChess.Presentation.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "InnoChess >= 1.0.0"
+      "InnoChess.Presentation >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -497,8 +497,8 @@
         "net8.0": {
           "targetAlias": "net8.0",
           "projectReferences": {
-            "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\InnoChess.csproj": {
-              "projectPath": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\InnoChess.csproj"
+            "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\InnoChess.Presentation.csproj": {
+              "projectPath": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\InnoChess.Presentation.csproj"
             }
           }
         }

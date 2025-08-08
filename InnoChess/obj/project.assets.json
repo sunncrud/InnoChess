@@ -453,9 +453,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\InnoChess.csproj",
-      "projectName": "InnoChess",
-      "projectPath": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\InnoChess.csproj",
+      "projectUniqueName": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\InnoChess.Presentation.csproj",
+      "projectName": "InnoChess.Presentation",
+      "projectPath": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\InnoChess.Presentation.csproj",
       "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\obj\\",
       "projectStyle": "PackageReference",

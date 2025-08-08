@@ -14,7 +14,7 @@ public class SessionsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetController(string id)
     {
-        return await GetController(id);
+        return Ok();
     }
 
 }

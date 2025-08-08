@@ -15,6 +15,6 @@ public class LocationsController : ControllerBase
     [HttpGet]
     public async Task<IActionResult> GetLocation(string location)
     {
-        
+        return Ok();
     }
 }

@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\InnoChess\InnoChess.csproj" />
+    <ProjectReference Include="..\InnoChess\InnoChess.Presentation.csproj" />
   </ItemGroup>
 
 </Project>

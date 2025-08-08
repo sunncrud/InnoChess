@@ -1,5 +1,21 @@
 [
   {
+    "ContainingType": "InnoChess.Controllers.LocationsController",
+    "Method": "GetLocation",
+    "RelativePath": "api/Locations",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "location",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "InnoChess.Controllers.SessionsController",
     "Method": "GetController",
     "RelativePath": "sessions",

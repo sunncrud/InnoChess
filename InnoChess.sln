@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36401.2
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnoChess", "InnoChess\InnoChess.csproj", "{21B2CE64-B237-4959-976A-31B1F7A34520}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnoChess.Presentation", "InnoChess\InnoChess.Presentation.csproj", "{21B2CE64-B237-4959-976A-31B1F7A34520}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InnoChess.Domain", "InnoChess.Domain\InnoChess.Domain.csproj", "{A1E1610A-6826-429B-BDFF-DE7CEEE4FB19}"
 EndProject
