@@ -1,0 +1,275 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\user\\source\\repos\\InnoChess\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E1610A-6826-429B-BDFF-DE7CEEE4FB19}|InnoChess.Domain\\InnoChess.Domain.csproj|c:\\users\\user\\source\\repos\\innochess\\innochess.domain\\models\\innochessdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1E1610A-6826-429B-BDFF-DE7CEEE4FB19}|InnoChess.Domain\\InnoChess.Domain.csproj|solutionrelative:innochess.domain\\models\\innochessdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E1610A-6826-429B-BDFF-DE7CEEE4FB19}|InnoChess.Domain\\InnoChess.Domain.csproj|c:\\users\\user\\source\\repos\\innochess\\innochess.domain\\models\\sessionsentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1E1610A-6826-429B-BDFF-DE7CEEE4FB19}|InnoChess.Domain\\InnoChess.Domain.csproj|solutionrelative:innochess.domain\\models\\sessionsentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E1610A-6826-429B-BDFF-DE7CEEE4FB19}|InnoChess.Domain\\InnoChess.Domain.csproj|c:\\users\\user\\source\\repos\\innochess\\innochess.domain\\models\\usersentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1E1610A-6826-429B-BDFF-DE7CEEE4FB19}|InnoChess.Domain\\InnoChess.Domain.csproj|solutionrelative:innochess.domain\\models\\usersentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E1610A-6826-429B-BDFF-DE7CEEE4FB19}|InnoChess.Domain\\InnoChess.Domain.csproj|c:\\users\\user\\source\\repos\\innochess\\innochess.domain\\models\\locationsentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A1E1610A-6826-429B-BDFF-DE7CEEE4FB19}|InnoChess.Domain\\InnoChess.Domain.csproj|solutionrelative:innochess.domain\\models\\locationsentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{21B2CE64-B237-4959-976A-31B1F7A34520}|InnoChess\\InnoChess.csproj|c:\\users\\user\\source\\repos\\innochess\\innochess\\controllers\\locationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{21B2CE64-B237-4959-976A-31B1F7A34520}|InnoChess\\InnoChess.csproj|solutionrelative:innochess\\controllers\\locationscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{21B2CE64-B237-4959-976A-31B1F7A34520}|InnoChess\\InnoChess.csproj|c:\\users\\user\\source\\repos\\innochess\\innochess\\controllers\\sessionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{21B2CE64-B237-4959-976A-31B1F7A34520}|InnoChess\\InnoChess.csproj|solutionrelative:innochess\\controllers\\sessionscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{21B2CE64-B237-4959-976A-31B1F7A34520}|InnoChess\\InnoChess.csproj|c:\\users\\user\\source\\repos\\innochess\\innochess\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{21B2CE64-B237-4959-976A-31B1F7A34520}|InnoChess\\InnoChess.csproj|solutionrelative:innochess\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{21B2CE64-B237-4959-976A-31B1F7A34520}|InnoChess\\InnoChess.csproj|c:\\users\\user\\source\\repos\\innochess\\innochess\\innochess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{21B2CE64-B237-4959-976A-31B1F7A34520}|InnoChess\\InnoChess.csproj|solutionrelative:innochess\\innochess.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D4D495AB-7250-4C76-BE04-124972EF10AF}|InnoChess.Application\\InnoChess.Application.csproj|c:\\users\\user\\source\\repos\\innochess\\innochess.application\\innochess.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{D4D495AB-7250-4C76-BE04-124972EF10AF}|InnoChess.Application\\InnoChess.Application.csproj|solutionrelative:innochess.application\\innochess.application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{21B2CE64-B237-4959-976A-31B1F7A34520}|InnoChess\\InnoChess.csproj|c:\\users\\user\\source\\repos\\innochess\\innochess\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{21B2CE64-B237-4959-976A-31B1F7A34520}|InnoChess\\InnoChess.csproj|solutionrelative:innochess\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{21B2CE64-B237-4959-976A-31B1F7A34520}|InnoChess\\InnoChess.csproj|c:\\users\\user\\source\\repos\\innochess\\innochess\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{21B2CE64-B237-4959-976A-31B1F7A34520}|InnoChess\\InnoChess.csproj|solutionrelative:innochess\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{21B2CE64-B237-4959-976A-31B1F7A34520}|InnoChess\\InnoChess.csproj|c:\\users\\user\\source\\repos\\innochess\\innochess\\innochess.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}",
+      "RelativeMoniker": "D:0:0:{21B2CE64-B237-4959-976A-31B1F7A34520}|InnoChess\\InnoChess.csproj|solutionrelative:innochess\\innochess.http||{5703B403-55E7-4C63-8C88-A8F52C7A45C5}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C30C3C3D-0C84-45B1-9832-440C3583CEEF}|InnoChess.Infrastructure\\InnoChess.Infrastructure.csproj|c:\\users\\user\\source\\repos\\innochess\\innochess.infrastructure\\innochess.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{C30C3C3D-0C84-45B1-9832-440C3583CEEF}|InnoChess.Infrastructure\\InnoChess.Infrastructure.csproj|solutionrelative:innochess.infrastructure\\innochess.infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A1E1610A-6826-429B-BDFF-DE7CEEE4FB19}|InnoChess.Domain\\InnoChess.Domain.csproj|c:\\users\\user\\source\\repos\\innochess\\innochess.domain\\innochess.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{A1E1610A-6826-429B-BDFF-DE7CEEE4FB19}|InnoChess.Domain\\InnoChess.Domain.csproj|solutionrelative:innochess.domain\\innochess.domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{21B2CE64-B237-4959-976A-31B1F7A34520}|InnoChess\\InnoChess.csproj|c:\\users\\user\\source\\repos\\innochess\\innochess\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{21B2CE64-B237-4959-976A-31B1F7A34520}|InnoChess\\InnoChess.csproj|solutionrelative:innochess\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "InnoChessDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess.Domain\\Models\\InnoChessDbContext.cs",
+              "RelativeDocumentMoniker": "InnoChess.Domain\\Models\\InnoChessDbContext.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess.Domain\\Models\\InnoChessDbContext.cs",
+              "RelativeToolTip": "InnoChess.Domain\\Models\\InnoChessDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T15:34:46.076Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "InnoChess\\Controllers\\UsersController.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "InnoChess\\Controllers\\UsersController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T14:37:14.317Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "LocationsController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\Controllers\\LocationsController.cs",
+              "RelativeDocumentMoniker": "InnoChess\\Controllers\\LocationsController.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\Controllers\\LocationsController.cs",
+              "RelativeToolTip": "InnoChess\\Controllers\\LocationsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T14:27:19.076Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SessionsController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\Controllers\\SessionsController.cs",
+              "RelativeDocumentMoniker": "InnoChess\\Controllers\\SessionsController.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\Controllers\\SessionsController.cs",
+              "RelativeToolTip": "InnoChess\\Controllers\\SessionsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T14:27:11.869Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "InnoChess.Domain.csproj",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess.Domain\\InnoChess.Domain.csproj",
+              "RelativeDocumentMoniker": "InnoChess.Domain\\InnoChess.Domain.csproj",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess.Domain\\InnoChess.Domain.csproj",
+              "RelativeToolTip": "InnoChess.Domain\\InnoChess.Domain.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-08-07T11:57:13.805Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "InnoChess.Infrastructure.csproj",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess.Infrastructure\\InnoChess.Infrastructure.csproj",
+              "RelativeDocumentMoniker": "InnoChess.Infrastructure\\InnoChess.Infrastructure.csproj",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess.Infrastructure\\InnoChess.Infrastructure.csproj",
+              "RelativeToolTip": "InnoChess.Infrastructure\\InnoChess.Infrastructure.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-08-07T12:00:13.218Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "LocationsEntity.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess.Domain\\Models\\LocationsEntity.cs",
+              "RelativeDocumentMoniker": "InnoChess.Domain\\Models\\LocationsEntity.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess.Domain\\Models\\LocationsEntity.cs",
+              "RelativeToolTip": "InnoChess.Domain\\Models\\LocationsEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T12:03:21.102Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SessionsEntity.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess.Domain\\Models\\SessionsEntity.cs",
+              "RelativeDocumentMoniker": "InnoChess.Domain\\Models\\SessionsEntity.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess.Domain\\Models\\SessionsEntity.cs",
+              "RelativeToolTip": "InnoChess.Domain\\Models\\SessionsEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T12:03:05.489Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "UsersEntity.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess.Domain\\Models\\UsersEntity.cs",
+              "RelativeDocumentMoniker": "InnoChess.Domain\\Models\\UsersEntity.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess.Domain\\Models\\UsersEntity.cs",
+              "RelativeToolTip": "InnoChess.Domain\\Models\\UsersEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T12:02:47.782Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "InnoChess.Application.csproj",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess.Application\\InnoChess.Application.csproj",
+              "RelativeDocumentMoniker": "InnoChess.Application\\InnoChess.Application.csproj",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess.Application\\InnoChess.Application.csproj",
+              "RelativeToolTip": "InnoChess.Application\\InnoChess.Application.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-08-07T13:37:45.694Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "InnoChess",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\InnoChess.csproj",
+              "RelativeDocumentMoniker": "InnoChess\\InnoChess.csproj",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\InnoChess.csproj",
+              "RelativeToolTip": "InnoChess\\InnoChess.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-08-07T13:59:06.117Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\Program.cs",
+              "RelativeDocumentMoniker": "InnoChess\\Program.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\Program.cs",
+              "RelativeToolTip": "InnoChess\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-07T14:01:52.542Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\appsettings.json",
+              "RelativeDocumentMoniker": "InnoChess\\appsettings.json",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\appsettings.json",
+              "RelativeToolTip": "InnoChess\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-07T14:05:51.012Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "InnoChess.http",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\InnoChess.http",
+              "RelativeDocumentMoniker": "InnoChess\\InnoChess.http",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\InnoChess.http",
+              "RelativeToolTip": "InnoChess\\InnoChess.http",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003502|",
+              "WhenOpened": "2025-08-07T12:24:44.57Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "InnoChess\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\InnoChess\\InnoChess\\appsettings.Development.json",
+              "RelativeToolTip": "InnoChess\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2025-08-07T12:24:40.498Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

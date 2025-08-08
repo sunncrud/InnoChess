@@ -1,0 +1,6 @@
+@InnoChess_HostAddress = http://localhost:5032
+
+GET {{InnoChess_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

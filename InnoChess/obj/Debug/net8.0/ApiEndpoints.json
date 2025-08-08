@@ -1,0 +1,28 @@
+[
+  {
+    "ContainingType": "InnoChess.Controllers.SessionsController",
+    "Method": "GetController",
+    "RelativePath": "sessions",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "InnoChess.Presetnation.Controllers.UsersController",
+    "Method": "GetUsers",
+    "RelativePath": "users",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]
