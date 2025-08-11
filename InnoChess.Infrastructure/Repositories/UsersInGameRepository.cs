@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InnoChess.Infrastructure.Repositories
 {
-    public class UsersRepository
+    public class UsersInGameRepository
     {
     }
 }
