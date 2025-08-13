@@ -11,9 +11,12 @@ public class LocationEntity
     public Guid Id { get; set; }
     public string Name { get; set; } = string.Empty;
     public string Description { get; set; } = string.Empty;
-    public int MaxPlayers { get; set; } // Different compare to MaxPlayers in SessionsEntity
+    public byte[] PosterImageData { get; set; } = [];
+    public string PosterImageContentType { get; set; } = string.Empty;
+    public int MaxPlayers { get; set; }
+    public string DescriptorFileUrl { get; set; } = string.Empty;
 
-    // Property for "Typed file describing the location"
+
     public List<SessionEntity> Sessions { get; set; } = [];
 
 

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using InnoChess.Domain.Models;
+using InnoChess.Domain.RepositoryContracts;
 
-namespace InnoChess.Infrastructure.Repositories
+namespace InnoChess.Infrastructure.Repositories;
+
+public class SessionsRepository(InnoChessDbContext context) : RepositoryBase<SessionEntity>(context), ISessionsRepository
 {
-    public class SessionsRepository
+    public Task<List<SessionEntity>> GetAllAsync(CancellationToken cancellationToken)
     {
+        throw new NotImplementedException();
     }
 }
