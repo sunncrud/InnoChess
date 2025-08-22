@@ -1,4 +1,8 @@
+using InnoChess.Application.ServiceContracts;
 using InnoChess.Domain.Models;
+using InnoChess.Domain.RepositoryContracts;
+using InnoChess.Infrastructure.Repositories;
+using InnoChess.Infrastructure.Services;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -9,6 +13,10 @@ var configuration = builder.Configuration;
 builder.Services.AddControllers();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
+
 builder.Services.AddDbContext<InnoChessDbContext>(options =>
 {
     options.UseSqlServer(configuration.GetConnectionString(nameof(InnoChessDbContext)));

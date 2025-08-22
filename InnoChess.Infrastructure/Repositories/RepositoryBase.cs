@@ -1,36 +1,42 @@
 ﻿using InnoChess.Domain.Models;
 using InnoChess.Domain.RepositoryContracts;
 using Microsoft.EntityFrameworkCore;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InnoChess.Infrastructure.Repositories
 {
-    public class RepositoryBase<T>(InnoChessDbContext context) : IRepositoryBase<T> where T : class
+    public class RepositoryBase<T> : IRepositoryBase<T>
+     where T : class
     {
-        private readonly InnoChessDbContext _context = context;
+        protected readonly InnoChessDbContext _context;
+
+        public RepositoryBase(InnoChessDbContext context)
+        {
+            _context = context;
+        }
 
         public async Task<List<T>> GetAllAsync(CancellationToken cancellationToken)
         {
             return await _context.Set<T>()
-            .AsNoTracking()
-            .ToListAsync(cancellationToken);
+                .AsNoTracking()
+                .ToListAsync();
         }
+        
         public async Task CreateAsync(T entity, CancellationToken cancellationToken)
         {
-            await context.Set<T>().AddAsync(entity, cancellationToken);
-            await context.SaveChangesAsync(cancellationToken);
+            await _context.Set<T>()
+                .AddAsync(entity, cancellationToken);
+            await _context
+                .SaveChangesAsync(cancellationToken);
         }
         public async Task UpdateAsync(T entity, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Update(entity);
+            await _context.SaveChangesAsync(cancellationToken);
         }
         public async Task DeleteAsync(T entity, CancellationToken cancellationToken)
         {
-            throw new NotImplementedException();
+            _context.Set<T>().Remove(entity);
+            await _context.SaveChangesAsync(cancellationToken);
         }
 
     }

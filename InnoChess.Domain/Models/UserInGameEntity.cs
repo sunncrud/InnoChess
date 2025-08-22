@@ -8,7 +8,7 @@ namespace InnoChess.Domain.Models;
 
 public class UserInGameEntity
 {
-    public int Id { get; set; }
+    public Guid Id { get; set; }
     
     public Guid SessionId { get; set; }
     public SessionEntity? Session { get; set; }

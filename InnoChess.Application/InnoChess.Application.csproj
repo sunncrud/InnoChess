@@ -20,8 +20,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ServiceContracts\" />
-    <Folder Include="Services\" />
+    <Folder Include="Contracts\AuthentificationContracts\" />
+    <Folder Include="Filtraion\" />
+    <Folder Include="MappingProfiles\" />
   </ItemGroup>
 
 </Project>

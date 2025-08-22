@@ -16,6 +16,6 @@ public class SessionEntity
     public Guid LocationId { get; set; }
     public LocationEntity? Location { get; set; }
     public List<UserInGameEntity> UsersInGame { get; set; } = [];
-    public Guid OwnerId { get; set; } // Creator of the Session
+    public Guid UserCreatorId { get; set; } 
 
 }
