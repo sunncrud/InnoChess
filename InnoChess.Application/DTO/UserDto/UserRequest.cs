@@ -1,6 +1,6 @@
 ﻿using System.Text.Json.Serialization;
 
-namespace InnoChess.Application.DTO;
+namespace InnoChess.Application.DTO.UserDto;
 
 public record UserRequest
 {
@@ -10,8 +10,8 @@ public record UserRequest
         Administrator = 2
     }
 
-    public string UserName { get; init; } = String.Empty;
-    public string Email { get; init; } = String.Empty;
+    public string UserName { get; init; } = string.Empty;
+    public string Email { get; init; } = string.Empty;
 
     [JsonPropertyName("password")]
     public string PasswordHash { get; init; } 

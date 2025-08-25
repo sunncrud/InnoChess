@@ -1,8 +1,8 @@
-﻿using InnoChess.Application.DTO;
+﻿using InnoChess.Application.DTO.UserDto;
+using InnoChess.Application.Mappings;
 using InnoChess.Application.ServiceContracts;
 using InnoChess.Domain.Models;
 using InnoChess.Domain.RepositoryContracts;
-using Microsoft.EntityFrameworkCore;
 
 namespace InnoChess.Infrastructure.Services;
 
@@ -20,32 +20,36 @@ public class UserService : IUserService
     public async Task<List<UserResponse>> GetAllUsersAsync(CancellationToken cancellationToken)
     {
         var users = await _userRepository.GetAllAsync(cancellationToken);
-
-        return users.Select(u => new UserResponse
-        {
-            Id = u.Id,
-            UserName = u.UserName,
-            Email = u.Email
-        }).ToList();
+        return users
+            .Select(UserMapper.ToResponse)
+            .ToList();
     }
-    public async Task<Guid> CreateUserAsync(UserRequest user, CancellationToken cancellationToken)
+    public async Task<Guid> CreateUserAsync(UserEntity user, CancellationToken cancellationToken)
     {
-        var entity = new UserEntity
-        {
-            Id = Guid.NewGuid(),
-            Email = user.Email,
-            UserName = user.UserName,
-            Password = user.PasswordHash
-        };
-        await _userRepository.CreateAsync(entity, cancellationToken);
+        await _userRepository.CreateAsync(user, cancellationToken);
+        return user.Id;   
+    }
+    public async Task<UserResponse?> GetUserByIdAsync(Guid id, CancellationToken cancellationToken)
+    {
+        var entity = await _userRepository.GetByIdAsync(id, cancellationToken);
 
-        return entity.Id;   
+        if (entity == null)
+            return null;
+
+        var user = UserMapper.ToResponse(entity);
+
+        return user;
     }
 
-
-
-    public Task<UserEntity?> GetUserByIdAsync(Guid id, CancellationToken cancellationToken)
+    public async Task DeleteUserAsync(Guid id, CancellationToken cancellationToken)
     {
-        throw new NotImplementedException();
+        var user = await _userRepository.GetByIdAsync(id, cancellationToken);
+
+        if (user == null)
+        {
+            throw new KeyNotFoundException($"User with ID {id} was not found.");
+        }
+
+        await _userRepository.DeleteAsync(user, cancellationToken);
     }
 }

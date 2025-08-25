@@ -1,11 +1,12 @@
-﻿using InnoChess.Application.DTO;
+﻿using InnoChess.Application.DTO.UserDto;
 using InnoChess.Domain.Models;
 
 namespace InnoChess.Application.ServiceContracts;
 
 public interface IUserService 
 {
-    Task<Guid> CreateUserAsync(UserRequest user, CancellationToken cancellationToken);
     Task<List<UserResponse>> GetAllUsersAsync(CancellationToken cancellationToken);
-    Task<UserEntity?> GetUserByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task<UserResponse?> GetUserByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task<Guid> CreateUserAsync(UserEntity user, CancellationToken cancellationToken);
+    Task DeleteUserAsync(Guid id, CancellationToken cancellationToken);
 }

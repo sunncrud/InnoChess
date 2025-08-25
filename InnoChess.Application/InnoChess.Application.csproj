@@ -22,7 +22,6 @@
   <ItemGroup>
     <Folder Include="Contracts\AuthentificationContracts\" />
     <Folder Include="Filtraion\" />
-    <Folder Include="MappingProfiles\" />
   </ItemGroup>
 
 </Project>

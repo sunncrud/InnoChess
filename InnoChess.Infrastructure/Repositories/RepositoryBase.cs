@@ -28,11 +28,6 @@ namespace InnoChess.Infrastructure.Repositories
             await _context
                 .SaveChangesAsync(cancellationToken);
         }
-        public async Task UpdateAsync(T entity, CancellationToken cancellationToken)
-        {
-            _context.Set<T>().Update(entity);
-            await _context.SaveChangesAsync(cancellationToken);
-        }
         public async Task DeleteAsync(T entity, CancellationToken cancellationToken)
         {
             _context.Set<T>().Remove(entity);

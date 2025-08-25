@@ -1,4 +1,5 @@
-﻿using InnoChess.Application.DTO;
+﻿using InnoChess.Application.DTO.UserDto;
+using InnoChess.Application.Mappings;
 using InnoChess.Application.ServiceContracts;
 using InnoChess.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -26,16 +27,15 @@ public class UserController : ControllerBase
     [HttpPost]
     public async Task<Guid> RegisterUser([FromBody] UserRequest user, CancellationToken cancellationToken)
     {
-        var entity = new UserEntity()
-        {
-            UserName = user.UserName,
-            Email = user.Email,
-            Password = user.PasswordHash,
-        };
-
-        await _userService.CreateUserAsync(user, cancellationToken);
+        var entity = UserMapper.ToEntity(user);
+        await _userService.CreateUserAsync(entity, cancellationToken);
         return entity.Id;
     }
 
+    [HttpDelete]
+    public async Task DeleteUser(Guid id, CancellationToken cancellationToken)
+    {
+        await _userService.DeleteUserAsync(id, cancellationToken);
+    }
 }
 
