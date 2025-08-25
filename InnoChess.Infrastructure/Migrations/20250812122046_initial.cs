@@ -18,7 +18,10 @@ namespace InnoChess.Infrastructure.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    MaxPlayers = table.Column<int>(type: "int", nullable: false)
+                    PosterImageData = table.Column<byte[]>(type: "varbinary(max)", nullable: false),
+                    PosterImageContentType = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    MaxPlayers = table.Column<int>(type: "int", nullable: false),
+                    DescriptorFileUrl = table.Column<string>(type: "nvarchar(max)", nullable: false)
                 },
                 constraints: table =>
                 {
