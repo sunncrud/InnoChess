@@ -6,16 +6,15 @@ using System.Threading.Tasks;
 
 namespace InnoChess.Domain.Models;
 
-public class SessionEntity
+public class SessionEntity : Entity<Guid>
 {
-    public Guid Id { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public int MaxPlayers { get; set; } 
-    public bool IsActive { get; set; }
+    public string Name { get; init; } = string.Empty;
+    public int MaxPlayers { get; init; } 
+    public bool IsActive { get; init; }
 
-    public Guid LocationId { get; set; }
-    public LocationEntity? Location { get; set; }
-    public List<UserInGameEntity> UsersInGame { get; set; } = [];
-    public Guid UserCreatorId { get; set; } 
+    public Guid LocationId { get; init; }
+    public LocationEntity? Location { get; init; }
+    public List<UserInGameEntity> UsersInGame { get; init; } = [];
+    public Guid UserCreatorId { get; init; } 
 
 }

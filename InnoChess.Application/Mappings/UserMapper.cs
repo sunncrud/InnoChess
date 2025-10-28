@@ -1,9 +1,10 @@
 ﻿using InnoChess.Application.DTO.UserDto;
+using InnoChess.Application.MappingContracts;
 using InnoChess.Domain.Models;
 
 namespace InnoChess.Application.Mappings;
 
-public class UserMapper
+public class UserMapper : IBaseMapper<UserRequest, UserResponse, UserEntity>
 {
     private static UserRequest.UserRole ParseRole(string? roleString)
     {
@@ -11,7 +12,17 @@ public class UserMapper
             ? role
             : UserRequest.UserRole.User; 
     }
-    public static UserRequest ToRequest(UserEntity entity)
+
+    public UserEntity FromResponseToEntity(UserResponse response)
+    {
+        return new UserEntity()
+        {
+            Id = response.Id,
+            Email = response.Email, //!!!!
+        };
+    }
+
+    public UserRequest FromEntityToRequest(UserEntity entity)
     {
         return new UserRequest
         {
@@ -21,7 +32,7 @@ public class UserMapper
             Role = ParseRole(entity.Role)
         };
     }
-    public static UserEntity ToEntity(UserRequest request)
+    public UserEntity FromRequestToEntity(UserRequest request)
     {
         return new UserEntity
         {
@@ -32,7 +43,7 @@ public class UserMapper
             Role = request.Role.ToString()
         };
     }
-    public static UserResponse ToResponse(UserEntity entity)
+    public UserResponse FromEntityToResponse(UserEntity entity)
     {
         return new UserResponse
         {

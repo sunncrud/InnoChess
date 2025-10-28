@@ -1,9 +1,13 @@
-﻿namespace InnoChess.Domain.RepositoryContracts;
+﻿using InnoChess.Domain.Models;
 
-public interface IRepositoryBase<T> where T : class
+namespace InnoChess.Domain.RepositoryContracts;
+
+public interface IRepositoryBase<TEntity, TKey>
+    where TEntity : Entity<TKey>
 {
-    public Task<List<T>> GetAllAsync(CancellationToken cancellationToken);
-    //public Task GetByIdAsync(Guid id, CancellationToken cancellationToken);
-    public Task CreateAsync(T entity, CancellationToken cancellationToken);
-    public Task DeleteAsync(T entity, CancellationToken cancellationToken);
+    public Task<List<TEntity>> GetAllAsync(CancellationToken cancellationToken);
+    public Task<TEntity?> GetByIdAsync(TKey id, CancellationToken cancellationToken);
+    public Task<TKey> CreateAsync(TEntity entity, CancellationToken cancellationToken);
+    public Task<TKey?> UpdateAsync(TEntity entity, CancellationToken cancellationToken);
+    public Task<TKey?> DeleteAsync(TKey id, CancellationToken cancellationToken);
 }

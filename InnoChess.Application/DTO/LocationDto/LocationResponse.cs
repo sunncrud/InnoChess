@@ -1,8 +1,8 @@
 ﻿namespace InnoChess.Application.DTO.LocationDto;
 
-public class LocationResponse
+public record LocationResponse : BaseDto
 {
-    public string Name { get; set; } = string.Empty;
-    public string Description {  get; set; } = string.Empty;
-    public int MaxPlayers { get; set; }
+    public string Name { get; init; } = string.Empty;
+    public string Description {  get; init; } = string.Empty;
+    public int MaxPlayers { get; init; }
 }

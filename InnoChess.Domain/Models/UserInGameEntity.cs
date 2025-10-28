@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace InnoChess.Domain.Models;
 
-public class UserInGameEntity
+public class UserInGameEntity : Entity<Guid>
 {
-    public Guid Id { get; set; }
-    
-    public Guid SessionId { get; set; }
-    public SessionEntity? Session { get; set; }
+    public Guid SessionId { get; init; }
+    public SessionEntity? Session { get; init; }
 
-    public Guid UserId { get; set; }
-    public UserEntity? User { get; set; }
+    public Guid UserId { get; init; }
+    public UserEntity? User { get; init; }
 }

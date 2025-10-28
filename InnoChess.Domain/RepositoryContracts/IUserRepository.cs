@@ -2,7 +2,7 @@
 
 namespace InnoChess.Domain.RepositoryContracts;
 
-public interface IUserRepository : IRepositoryBase<UserEntity>
+public interface IUserRepository : IRepositoryBase<UserEntity, Guid>
 {
-    public Task<UserEntity?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
+    
 }

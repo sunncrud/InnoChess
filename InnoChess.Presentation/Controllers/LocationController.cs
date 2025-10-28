@@ -1,52 +1,30 @@
-﻿using InnoChess.Application.ServiceContracts;
-using InnoChess.Application.DTO.LocationDto;
+﻿using InnoChess.Application.DTO.LocationDto;
+using InnoChess.Application.ServiceContracts;
 using Microsoft.AspNetCore.Mvc;
-using InnoChess.Domain.Models;
-using InnoChess.Application.Mappings;
 
-namespace InnoChess.Controllers;
+namespace InnoChess.Presentation.Controllers;
 
 [ApiController]
 [Route("api/[controller]")]
-public class LocationController : ControllerBase
+public class LocationController(ICrudService<LocationRequest, LocationResponse, Guid> crudService, 
+    ILocationService locationService)
+    : CrudController<LocationRequest, LocationResponse, Guid>(crudService)
 {
-    private readonly ILocationService _locationService;
-    public LocationController(ILocationService locationService)
+    [HttpGet("{by-name}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<LocationResponse?>> GetByNameAsync([FromBody]string name, CancellationToken cancellationToken)
     {
-        _locationService = locationService;
-    }
-
-    [HttpGet]
-    public async Task<ActionResult<List<LocationResponse>>> GetAllLocations(CancellationToken cancellationToken)
-    {
-        var locations = await _locationService.GetAllLocationsAsync(cancellationToken);
-        return locations;
-    }
-
-    [HttpGet("{id:guid}")]
-    public async Task<LocationResponse?> GetById(Guid id, CancellationToken cancellationToken)
-    {
-        var entity = await _locationService.GetLocationByIdAsync(id, cancellationToken);
+        var entity = await locationService.GetLocationByNameAsync(name, cancellationToken);
         return entity;
     }
-
-    [HttpGet("{name}")]
-    public async Task<LocationResponse?> GetByName(string name, CancellationToken cancellationToken)
+    
+    [HttpGet("{by-description}")]
+    [ProducesResponseType(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<LocationResponse?>> GetByDescriptionAsync([FromBody]string description, CancellationToken cancellationToken)
     {
-        var entity = await _locationService.GetLocationByNameAsync(name, cancellationToken);
+        var entity = await locationService.GetLocationByDescriptionAsync(description, cancellationToken);
         return entity;
-    }
-
-    [HttpPost]
-    public async Task<Guid> CreateLocation([FromBody]LocationRequest location, CancellationToken cancellationToken)
-    {
-        var entity = await _locationService.CreateLocaitonAsync(location, cancellationToken);
-        return entity;
-    }
-
-    [HttpDelete]
-    public async Task DeleteLocation(Guid id, CancellationToken cancellationToken)
-    {
-        await _locationService.DeleteLocationAsync(id, cancellationToken);
     }
 }

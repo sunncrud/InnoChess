@@ -4,34 +4,46 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InnoChess.Infrastructure.Repositories
 {
-    public class RepositoryBase<T> : IRepositoryBase<T>
-     where T : class
+    public class RepositoryBase<TEntity, TKey>(InnoChessDbContext context) : IRepositoryBase<TEntity, TKey>
+        where TEntity : Entity<TKey>
     {
-        protected readonly InnoChessDbContext _context;
+        protected readonly InnoChessDbContext _context = context;
 
-        public RepositoryBase(InnoChessDbContext context)
+        public async Task<List<TEntity>> GetAllAsync(CancellationToken cancellationToken)
         {
-            _context = context;
-        }
-
-        public async Task<List<T>> GetAllAsync(CancellationToken cancellationToken)
-        {
-            return await _context.Set<T>()
+            return await _context.Set<TEntity>()
                 .AsNoTracking()
-                .ToListAsync();
+                .ToListAsync(cancellationToken);
         }
-        
-        public async Task CreateAsync(T entity, CancellationToken cancellationToken)
+
+        public async Task<TEntity?> GetByIdAsync(TKey id, CancellationToken cancellationToken)
         {
-            await _context.Set<T>()
+            return await _context.Set<TEntity>()
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.Id.Equals(id), cancellationToken);
+        }
+
+        public async Task<TKey> CreateAsync(TEntity entity, CancellationToken cancellationToken)
+        {
+            await _context.Set<TEntity>()
                 .AddAsync(entity, cancellationToken);
             await _context
                 .SaveChangesAsync(cancellationToken);
+            return entity.Id;
         }
-        public async Task DeleteAsync(T entity, CancellationToken cancellationToken)
+        public async Task<TKey?> UpdateAsync(TEntity entity, CancellationToken cancellationToken)
         {
-            _context.Set<T>().Remove(entity);
+            _context.Set<TEntity>().Update(entity);
             await _context.SaveChangesAsync(cancellationToken);
+            return entity.Id;
+        }
+
+        public async Task<TKey?> DeleteAsync(TKey id, CancellationToken cancellationToken)
+        {
+            var entity = await GetByIdAsync(id, cancellationToken);
+            if (entity != null) _context.Set<TEntity>().Remove(entity);
+            await _context.SaveChangesAsync(cancellationToken);
+            return entity.Id;
         }
 
     }

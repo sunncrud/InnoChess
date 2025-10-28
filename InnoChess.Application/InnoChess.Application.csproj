@@ -20,7 +20,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Contracts\AuthentificationContracts\" />
     <Folder Include="Filtraion\" />
   </ItemGroup>
 

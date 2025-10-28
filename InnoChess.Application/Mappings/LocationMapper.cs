@@ -1,34 +1,35 @@
 ﻿using InnoChess.Application.DTO.LocationDto;
+using InnoChess.Application.MappingContracts;
 using InnoChess.Domain.Models;
 
 namespace InnoChess.Application.Mappings;
 
-public class LocationMapper
+public class LocationMapper : IBaseMapper<LocationRequest, LocationResponse, LocationEntity>
 {
-    public static LocationEntity FromResponseToEntity(LocationResponse location)
+    public LocationEntity FromResponseToEntity(LocationResponse response)
     {
         return new LocationEntity
         {
-            Name = location.Name,
-            Description = location.Description,
-            MaxPlayers = location.MaxPlayers,
+            Name = response.Name,
+            Description = response.Description,
+            MaxPlayers = response.MaxPlayers,
         };
     }
 
-    public static LocationEntity FromRequestToEntity(LocationRequest location)
+    public LocationEntity FromRequestToEntity(LocationRequest request)
     {
         return new LocationEntity
         {
-            Name = location.Name,
-            Description = location.Description,
-            MaxPlayers = location.MaxPlayers,
-            PosterImageData = location.PosterImageData,
-            PosterImageContentType = location.PosterImageContentType,
-            DescriptorFileUrl = location.DescriptionFileUrl
+            Name = request.Name,
+            Description = request.Description,
+            MaxPlayers = request.MaxPlayers,
+            PosterImageData = request.PosterImageData,
+            PosterImageContentType = request.PosterImageContentType,
+            DescriptorFileUrl = request.DescriptionFileUrl
         };
     }
 
-    public static LocationRequest FromEntityToRequest(LocationEntity entity)
+    public LocationRequest FromEntityToRequest(LocationEntity entity)
     {
         return new LocationRequest
         {
@@ -41,7 +42,7 @@ public class LocationMapper
         };
     }
 
-    public static LocationResponse FromEntityToResponse(LocationEntity entity)
+    public LocationResponse FromEntityToResponse(LocationEntity entity)
     {
         return new LocationResponse
         {

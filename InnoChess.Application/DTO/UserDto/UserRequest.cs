@@ -2,7 +2,7 @@
 
 namespace InnoChess.Application.DTO.UserDto;
 
-public record UserRequest
+public record UserRequest : BaseDto
 {
     public enum UserRole
     {

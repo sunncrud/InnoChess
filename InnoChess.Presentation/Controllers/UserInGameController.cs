@@ -1,5 +1,10 @@
-﻿namespace InnoChess.Presentation.Controllers;
+﻿using InnoChess.Application.DTO.UserInGameDto;
+using InnoChess.Application.ServiceContracts;
 
-public class UserInGameController
+namespace InnoChess.Presentation.Controllers;
+
+public class UserInGameController(ICrudService<UserInGameRequest, UserInGameResponse, Guid> crudService) 
+    : CrudController<UserInGameRequest, UserInGameResponse, Guid>(crudService)
 {
+    
 }
