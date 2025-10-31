@@ -4,7 +4,7 @@ using InnoChess.Domain.Models;
 
 namespace InnoChess.Application.Mappings;
 
-public class UserMapper : IBaseMapper<UserRequest, UserResponse, UserEntity>
+public class UserMapper : IUserMapper
 {
     private static UserRequest.UserRole ParseRole(string? roleString)
     {

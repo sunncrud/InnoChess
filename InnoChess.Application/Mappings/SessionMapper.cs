@@ -4,7 +4,7 @@ using InnoChess.Domain.Models;
 
 namespace InnoChess.Application.Mappings;
 
-public class SessionMapper : IBaseMapper<SessionRequest, SessionResponse, SessionEntity>
+public class SessionMapper : ISessionMapper
 {
     public SessionEntity FromRequestToEntity(SessionRequest request)
     {

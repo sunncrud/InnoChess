@@ -4,6 +4,7 @@
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
   </PropertyGroup>
 
   <ItemGroup>
@@ -20,6 +21,12 @@
     <ProjectReference Include="..\InnoChess.Application\InnoChess.Application.csproj" />
     <ProjectReference Include="..\InnoChess.Domain\InnoChess.Domain.csproj" />
     <ProjectReference Include="..\InnoChess.Infrastructure\InnoChess.Infrastructure.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="..\.dockerignore">
+      <Link>.dockerignore</Link>
+    </Content>
   </ItemGroup>
 
 </Project>

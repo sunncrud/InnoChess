@@ -3,6 +3,7 @@ using InnoChess.Application.ServiceContracts;
 using InnoChess.Application.Services;
 using InnoChess.Domain.Models;
 using InnoChess.Domain.RepositoryContracts;
+using InnoChess.Infrastructure;
 using InnoChess.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 

@@ -3,7 +3,7 @@ using InnoChess.Domain.RepositoryContracts;
 
 namespace InnoChess.Infrastructure.Repositories;
 
-public class UserInGameRepository(InnoChessDbContext context) : RepositoryBase<UserInGameEntity, Guid>(context), IUserInGameRepository
+public class UserInSessionRepository(InnoChessDbContext context) : RepositoryBase<UserInSession, Guid>(context), IUserInGameRepository
 {
     
 }

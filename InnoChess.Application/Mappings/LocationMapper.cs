@@ -4,11 +4,11 @@ using InnoChess.Domain.Models;
 
 namespace InnoChess.Application.Mappings;
 
-public class LocationMapper : IBaseMapper<LocationRequest, LocationResponse, LocationEntity>
+public class LocationMapper : ILocationMapper
 {
     public LocationEntity FromResponseToEntity(LocationResponse response)
     {
-        return new LocationEntity
+        return new LocationEntity()
         {
             Name = response.Name,
             Description = response.Description,
@@ -18,7 +18,7 @@ public class LocationMapper : IBaseMapper<LocationRequest, LocationResponse, Loc
 
     public LocationEntity FromRequestToEntity(LocationRequest request)
     {
-        return new LocationEntity
+        return new LocationEntity()
         {
             Name = request.Name,
             Description = request.Description,
@@ -31,7 +31,7 @@ public class LocationMapper : IBaseMapper<LocationRequest, LocationResponse, Loc
 
     public LocationRequest FromEntityToRequest(LocationEntity entity)
     {
-        return new LocationRequest
+        return new LocationRequest()
         {
             Name = entity.Name,
             Description = entity.Description,
@@ -44,7 +44,7 @@ public class LocationMapper : IBaseMapper<LocationRequest, LocationResponse, Loc
 
     public LocationResponse FromEntityToResponse(LocationEntity entity)
     {
-        return new LocationResponse
+        return new LocationResponse()
         {
             Name = entity.Name,
             Description = entity.Description,

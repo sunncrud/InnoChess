@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace InnoChess.Infrastructure.Configurations
 {
-    public class UserInGameConfiguration : IEntityTypeConfiguration<UserInGameEntity>
+    public class UserInSessionConfiguration : IEntityTypeConfiguration<UserInSession>
     {
-        public void Configure(EntityTypeBuilder<UserInGameEntity> builder)
+        public void Configure(EntityTypeBuilder<UserInSession> builder)
         {
             builder.HasKey(x => x.Id);
 
