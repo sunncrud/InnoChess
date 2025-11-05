@@ -27,14 +27,14 @@ namespace InnoChess.Infrastructure.Repositories
         {
             await _context.Set<TEntity>()
                 .AddAsync(entity, cancellationToken);
-            await _context
-                .SaveChangesAsync(cancellationToken);
+            //await _context
+                //.SaveChangesAsync(cancellationToken);
             return entity.Id;
         }
         public async Task<TKey?> UpdateAsync(TEntity entity, CancellationToken cancellationToken)
         {
             _context.Set<TEntity>().Update(entity);
-            await _context.SaveChangesAsync(cancellationToken);
+            //await _context.SaveChangesAsync(cancellationToken);
             return entity.Id;
         }
 
@@ -42,9 +42,13 @@ namespace InnoChess.Infrastructure.Repositories
         {
             var entity = await GetByIdAsync(id, cancellationToken);
             if (entity != null) _context.Set<TEntity>().Remove(entity);
-            await _context.SaveChangesAsync(cancellationToken);
+            //await _context.SaveChangesAsync(cancellationToken);
             return entity.Id;
         }
 
+        public async Task SaveAsync(CancellationToken cancellationToken)
+        {
+            await _context.SaveChangesAsync(cancellationToken);
+        } 
     }
 }

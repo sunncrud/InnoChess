@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace InnoChess.Domain.Models;
 
-public class UserInSession : Entity<Guid>
+public class UserInSessionEntity : Entity<Guid>
 {
     public Guid SessionId { get; init; }
     public SessionEntity? Session { get; init; }

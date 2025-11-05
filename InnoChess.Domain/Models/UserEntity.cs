@@ -13,5 +13,5 @@ public class UserEntity : Entity<Guid>
     public string Email { get; init; } = string.Empty;
     public string Password { get; init; } = string.Empty;
 
-    public List<UserInSession>? UsersInGame { get; init; }
+    public List<UserInSessionEntity>? UsersInGame { get; init; }
 }

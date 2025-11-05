@@ -10,4 +10,5 @@ public interface IRepositoryBase<TEntity, TKey>
     public Task<TKey> CreateAsync(TEntity entity, CancellationToken cancellationToken);
     public Task<TKey?> UpdateAsync(TEntity entity, CancellationToken cancellationToken);
     public Task<TKey?> DeleteAsync(TKey id, CancellationToken cancellationToken);
+    public Task SaveAsync(CancellationToken cancellationToken);
 }

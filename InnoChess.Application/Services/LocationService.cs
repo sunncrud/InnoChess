@@ -1,11 +1,11 @@
 ﻿using InnoChess.Application.DTO.LocationDto;
-using InnoChess.Application.Mappings;
+using InnoChess.Application.MappingContracts;
 using InnoChess.Application.ServiceContracts;
 using InnoChess.Domain.RepositoryContracts;
 
 namespace InnoChess.Application.Services;
 
-public class LocationService(ILocationRepository repository, LocationMapper mapper) : ILocationService
+public class LocationService(ILocationRepository repository, ILocationMapper mapper) : ILocationService
 {
     public async Task<LocationResponse?> GetLocationByNameAsync(string name, CancellationToken cancellationToken)
     {

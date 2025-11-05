@@ -16,7 +16,7 @@ public class SessionEntity : Entity<Guid>
     
     public Guid LocationId { get; init; }
     public LocationEntity? Location { get; init; }
-    public List<UserInSession> UsersInGame { get; init; } = [];
+    public List<UserInSessionEntity> UsersInGame { get; init; } = [];
     
 
 }
