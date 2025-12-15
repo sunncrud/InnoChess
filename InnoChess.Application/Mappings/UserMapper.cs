@@ -28,7 +28,7 @@ public class UserMapper : IUserMapper
         {
             UserName = entity.UserName,
             Email = entity.Email,
-            PasswordHash = entity.Password,
+            PasswordHash = entity.PasswordHash,
             Role = ParseRole(entity.Role)
         };
     }
@@ -39,7 +39,7 @@ public class UserMapper : IUserMapper
             Id = Guid.NewGuid(),
             UserName = request.UserName,
             Email = request.Email,
-            Password = request.PasswordHash,
+            PasswordHash = request.PasswordHash,
             Role = request.Role.ToString()
         };
     }

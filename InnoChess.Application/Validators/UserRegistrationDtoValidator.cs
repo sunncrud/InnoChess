@@ -3,7 +3,7 @@ using InnoChess.Application.DTO.UserDto;
 
 namespace InnoChess.Application.Validators;
 
-public class UserRegistrationDtoValidator : AbstractValidator<UserRegistrationDto>
+public class UserRegistrationDtoValidator : AbstractValidator<UserRegistrationRequest>
 {
     public UserRegistrationDtoValidator()
     {

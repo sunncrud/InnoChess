@@ -5,7 +5,9 @@ using Microsoft.EntityFrameworkCore;
 namespace InnoChess.Infrastructure.Repositories;
 
 public class LocationRepository(InnoChessDbContext context) : RepositoryBase<LocationEntity, Guid>(context), ILocationRepository
-{ 
+{
+    private readonly InnoChessDbContext _context = context;
+
     public async Task<LocationEntity?> GetByNameAsync(string name, CancellationToken cancellationToken)
     {
         if (string.IsNullOrWhiteSpace(name)) return null;
