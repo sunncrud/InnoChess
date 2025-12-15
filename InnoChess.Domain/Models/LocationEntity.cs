@@ -6,18 +6,14 @@ using System.Threading.Tasks;
 
 namespace InnoChess.Domain.Models;
 
-public class LocationEntity
+public class LocationEntity : Entity<Guid>
 {
-    public Guid Id { get; set; }
-    public string Name { get; set; } = string.Empty;
-    public string Description { get; set; } = string.Empty;
-    public byte[] PosterImageData { get; set; } = [];
-    public string PosterImageContentType { get; set; } = string.Empty;
-    public int MaxPlayers { get; set; }
-    public string DescriptorFileUrl { get; set; } = string.Empty;
+    public string Name { get; init; } = string.Empty;
+    public string Description { get; init; } = string.Empty;
+    public int MaxPlayers { get; init; }
+    public byte[] PosterImageData { get; init; } = [];
+    public string PosterImageContentType { get; init; } = string.Empty;
+    public string DescriptorFileUrl { get; init; } = string.Empty;
 
-
-    public List<SessionEntity> Sessions { get; set; } = [];
-
-
+    public List<SessionEntity> Sessions { get; init; } = [];
 }
