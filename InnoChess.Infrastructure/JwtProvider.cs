@@ -1,13 +1,14 @@
 ﻿using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using InnoChess.Application.Auth;
 using InnoChess.Domain.Models;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
 
 namespace InnoChess.Infrastructure;
 
-public class JwtProvider(IOptions<JwtOptions> options)
+public class JwtProvider(IOptions<JwtOptions> options) : IJwtProvider
 {
     private readonly JwtOptions _options = options.Value;
     public string GenerateJwtToken(UserEntity user)
@@ -17,7 +18,7 @@ public class JwtProvider(IOptions<JwtOptions> options)
         var token = new JwtSecurityToken(
             claims: claims,
             signingCredentials: signingCredentials,
-            expires: DateTime.UtcNow.AddDays(_options.ExpiresHours)
+            expires: DateTime.UtcNow.AddHours(_options.ExpiresHours)
         );
         var tokenValue = new JwtSecurityTokenHandler().WriteToken(token);
         return tokenValue;

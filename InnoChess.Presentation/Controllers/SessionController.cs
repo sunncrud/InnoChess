@@ -1,9 +1,11 @@
 ﻿using InnoChess.Application.DTO.SessionDto;
 using InnoChess.Application.ServiceContracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InnoChess.Presentation.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("sessions")]
 public class SessionController(ICrudService<SessionRequest, SessionResponse, Guid> crudService, ISessionService sessionService) 

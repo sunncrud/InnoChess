@@ -16,25 +16,6 @@ public class SessionMapper : ISessionMapper
         };
     }
 
-    public SessionEntity FromResponseToEntity(SessionResponse response)
-    {
-        return new SessionEntity()
-        {
-            Name = response.Name,
-            MaxPlayers = response.MaxPlayers,
-        };
-    }
-
-    public SessionRequest FromEntityToRequest(SessionEntity entity)
-    {
-        return new SessionRequest()
-        {
-            Name = entity.Name,
-            MaxPlayers = entity.MaxPlayers,
-            IsActive = entity.IsActive,
-        };
-    }
-
     public SessionResponse FromEntityToResponse(SessionEntity entity)
     {
         return new SessionResponse()

@@ -2,7 +2,7 @@
 
 namespace InnoChess.Domain.RepositoryContracts;
 
-public interface IUserInGameRepository : IRepositoryBase<UserInSessionEntity, Guid>
+public interface IUserInSessionRepository : IRepositoryBase<UserInSessionEntity, Guid>
 {
     
 }

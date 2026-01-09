@@ -1,9 +1,11 @@
 ﻿using InnoChess.Application.DTO.LocationDto;
 using InnoChess.Application.ServiceContracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InnoChess.Presentation.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public class LocationController(ICrudService<LocationRequest, LocationResponse, Guid> crudService, 

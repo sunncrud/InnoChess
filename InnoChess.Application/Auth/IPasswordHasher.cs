@@ -1,4 +1,4 @@
-﻿namespace InnoChess.Infrastructure;
+﻿namespace InnoChess.Application.Auth;
 
 public interface IPasswordHasher
 {

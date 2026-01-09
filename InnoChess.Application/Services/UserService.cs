@@ -1,13 +1,13 @@
 ﻿using InnoChess.Application.Auth;
 using InnoChess.Application.DTO.UserDto;
 using InnoChess.Application.MappingContracts;
+using InnoChess.Application.ServiceContracts;
 using InnoChess.Domain.Models;
 using InnoChess.Domain.RepositoryContracts;
-using InnoChess.Infrastructure;
 
 namespace InnoChess.Application.Services;
 
-public class UserService(IUserMapper userMapper,IUserRepository userRepository,IPasswordHasher passwordHasher, IJwtProvider jwtProvider)
+public class UserService(IUserMapper userMapper,IUserRepository userRepository,IPasswordHasher passwordHasher, IJwtProvider jwtProvider):IUserService
 {
     public async Task Register(string userName, string email, string password, CancellationToken cancellationToken)
     {

@@ -1,9 +1,11 @@
 ﻿using InnoChess.Application.ServiceContracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 
 namespace InnoChess.Presentation.Controllers;
 
+[Authorize]
 [ApiController]
 [Route("api/[controller]")]
 public abstract class CrudController<TRequest, TResponse, TKey>(ICrudService<TRequest, TResponse, TKey> crudService)
@@ -18,6 +20,7 @@ public abstract class CrudController<TRequest, TResponse, TKey>(ICrudService<TRe
     }
 
     [HttpGet("{id:guid}")]
+    [Authorize]
     [ProducesResponseType(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<TResponse?> GetById([FromRoute]TKey key, CancellationToken cancellationToken)
@@ -35,7 +38,7 @@ public abstract class CrudController<TRequest, TResponse, TKey>(ICrudService<TRe
         await crudService.UpdateAsync(request, cancellationToken);
     }
     
-    [HttpPost("{id:guid}")]
+    [HttpPost]
     [ProducesResponseType(StatusCodes.Status201Created)]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
     public async Task<TKey> Create([FromBody]TRequest request, CancellationToken cancellationToken)

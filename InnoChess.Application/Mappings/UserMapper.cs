@@ -12,26 +12,7 @@ public class UserMapper : IUserMapper
             ? role
             : UserRequest.UserRole.User; 
     }
-
-    public UserEntity FromResponseToEntity(UserResponse response)
-    {
-        return new UserEntity()
-        {
-            Id = response.Id,
-            Email = response.Email, //!!!!
-        };
-    }
-
-    public UserRequest FromEntityToRequest(UserEntity entity)
-    {
-        return new UserRequest
-        {
-            UserName = entity.UserName,
-            Email = entity.Email,
-            PasswordHash = entity.PasswordHash,
-            Role = ParseRole(entity.Role)
-        };
-    }
+    
     public UserEntity FromRequestToEntity(UserRequest request)
     {
         return new UserEntity
