@@ -14,6 +14,11 @@ namespace InnoChess.Infrastructure.Repositories
                 .ToListAsync(cancellationToken);
         }
 
+        public IQueryable<TEntity> GetQueryable()
+        {
+            return context.Set<TEntity>().AsNoTracking();
+        }
+        
         public async Task<TEntity?> GetByIdAsync(TKey id, CancellationToken cancellationToken)
         {
             return await context.Set<TEntity>()

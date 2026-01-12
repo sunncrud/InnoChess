@@ -6,6 +6,7 @@ public interface IRepositoryBase<TEntity, TKey>
     where TEntity : Entity<TKey>
 {
     public Task<List<TEntity>> GetAllAsync(CancellationToken cancellationToken);
+    public IQueryable<TEntity> GetQueryable();
     public Task<TEntity?> GetByIdAsync(TKey id, CancellationToken cancellationToken);
     public Task<TKey> CreateAsync(TEntity entity, CancellationToken cancellationToken);
     public Task<TKey?> UpdateAsync(TEntity entity, CancellationToken cancellationToken);

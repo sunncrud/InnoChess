@@ -1,4 +1,5 @@
-﻿using InnoChess.Application.ServiceContracts;
+﻿using InnoChess.Application.Pagination;
+using InnoChess.Application.ServiceContracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
@@ -13,9 +14,9 @@ public abstract class CrudController<TRequest, TResponse, TKey>(ICrudService<TRe
 {
     [HttpGet]
     [ProducesResponseType(StatusCodes.Status200OK)]
-    public async Task<ActionResult<List<TResponse>>> GetAll(CancellationToken cancellationToken)
+    public async Task<ActionResult<PagedResult<TResponse>>> GetAll([FromQuery] PageParams pageParams, CancellationToken cancellationToken)
     {
-        var entities = crudService.GetAllAsync(cancellationToken);
+        var entities = crudService.GetAllAsync(pageParams, cancellationToken);
         return await entities;
     }
 
