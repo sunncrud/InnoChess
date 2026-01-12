@@ -36,15 +36,7 @@ services.AddScoped<IUserInSessionRepository, UserInSessionRepository>();
 services.AddScoped<ILocationService, LocationService>();
 services.AddScoped<ISessionService, SessionService>();
 services.AddScoped<IUserService, UserService>();
-
-services.AddScoped<ICrudService<UserRequest, UserResponse, Guid>,
-    CrudService<UserRequest, UserResponse, UserEntity, IUserMapper, Guid>>();
-services.AddScoped<ICrudService<LocationRequest, LocationResponse, Guid>, 
-    CrudService<LocationRequest, LocationResponse,LocationEntity,ILocationMapper,Guid>>();
-services.AddScoped<ICrudService<SessionRequest, SessionResponse,Guid>,
-    CrudService<SessionRequest, SessionResponse,SessionEntity,ISessionMapper,Guid>>();
-services.AddScoped<ICrudService<UserInSessionRequest, UserInSessionResponse, Guid>,
-    CrudService<UserInSessionRequest, UserInSessionResponse, UserInSessionEntity, IUserInSessionMapper, Guid>>();
+services.AddScoped<IUserInSessionService, UserInSessionService>();
 
 services.AddScoped<UserService>();
 

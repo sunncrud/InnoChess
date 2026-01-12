@@ -1,19 +1,54 @@
 ﻿using InnoChess.Application.DTO.SessionDto;
+using InnoChess.Application.Pagination;
 using InnoChess.Application.ServiceContracts;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace InnoChess.Presentation.Controllers;
 
-[Authorize]
 [ApiController]
+[Authorize]
+[ProducesResponseType(StatusCodes.Status200OK)]
+[ProducesResponseType(StatusCodes.Status404NotFound)]
+[ProducesResponseType(StatusCodes.Status400BadRequest)]
 [Route("sessions")]
-public class SessionController(ICrudService<SessionRequest, SessionResponse, Guid> crudService, ISessionService sessionService) 
-    : CrudController<SessionRequest, SessionResponse, Guid>(crudService)
+public class SessionController(ISessionService sessionService) 
 {
+    [HttpGet]
+    public async Task<ActionResult<PagedResult<SessionResponse>>> GetAll([FromQuery] PageParams pageParams, CancellationToken cancellationToken)
+    {
+        var entities = sessionService.GetAllAsync(pageParams, cancellationToken);
+        return await entities;
+    }
+
+    [HttpGet("{id:guid}")]
+    public async Task<SessionResponse?> GetById([FromRoute]Guid key, CancellationToken cancellationToken)
+    {
+        var entity = await sessionService.GetByIdAsync(key, cancellationToken);
+        return entity;
+    }
+
+    [HttpPut("{id:guid}")]
+    public async Task Update([FromBody]SessionRequest request, CancellationToken cancellationToken)
+    {
+        await sessionService.UpdateAsync(request, cancellationToken);
+    }
+    
+    [HttpPost]
+    public async Task<Guid> Create([FromBody]SessionRequest request, CancellationToken cancellationToken)
+    {
+        var entity = await sessionService.CreateAsync(request, cancellationToken);
+        return entity;
+    }
+
+    [HttpDelete("{id:guid}")]
+    public async Task<Guid> Delete([FromRoute]Guid key, CancellationToken cancellationToken)
+    {
+        await sessionService.DeleteAsync(key, cancellationToken);
+        return key;
+    }
+    
     [HttpGet("{active}")]
-    [ProducesResponseType(StatusCodes.Status200OK)]
-    [ProducesResponseType(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<List<SessionResponse>>> GetAllActiveAsync(CancellationToken cancellationToken)
     {
         var entities = await sessionService.GetAllActiveAsync(cancellationToken);
