@@ -30,19 +30,15 @@ public class UserController(IUserService userService)
     }
 
     [HttpPut("{id:guid}")]
+    [Authorize(Roles = "Admin")]
     public async Task Update([FromBody]UserRequest request, CancellationToken cancellationToken)
     {
         await userService.UpdateAsync(request, cancellationToken);
     }
     
-    [HttpPost]
-    public async Task<Guid> Create([FromBody]UserRequest request, CancellationToken cancellationToken)
-    {
-        var entity = await userService.CreateAsync(request, cancellationToken);
-        return entity;
-    }
 
     [HttpDelete("{id:guid}")]
+    [Authorize(Roles = "Admin")]
     public async Task<Guid> Delete([FromRoute]Guid key, CancellationToken cancellationToken)
     {
         await userService.DeleteAsync(key, cancellationToken);

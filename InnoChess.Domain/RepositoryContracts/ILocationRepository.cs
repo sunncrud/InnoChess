@@ -2,7 +2,7 @@
 
 namespace InnoChess.Domain.RepositoryContracts;
 
-public interface ILocationRepository : IRepositoryBase<LocationEntity, Guid>
+public interface ILocationRepository : IRepositoryBase<LocationEntity>
 {
     public Task<LocationEntity?> GetByNameAsync(string name, CancellationToken cancellationToken);
     public Task<LocationEntity?> GetByDescriptionAsync(string description, CancellationToken cancellationToken);

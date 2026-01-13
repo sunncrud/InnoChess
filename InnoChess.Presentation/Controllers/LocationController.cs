@@ -29,12 +29,14 @@ public class LocationController(ILocationService locationService)
     }
 
     [HttpPut("{id:guid}")]
+    [Authorize(Roles = "Admin")]
     public async Task Update([FromBody]LocationRequest request, CancellationToken cancellationToken)
     {
         await locationService.UpdateAsync(request, cancellationToken);
     }
     
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     public async Task<Guid> Create([FromBody]LocationRequest request, CancellationToken cancellationToken)
     {
         var entity = await locationService.CreateAsync(request, cancellationToken);
@@ -42,6 +44,7 @@ public class LocationController(ILocationService locationService)
     }
 
     [HttpDelete("{id:guid}")]
+    [Authorize(Roles = "Admin")]
     public async Task<Guid> Delete([FromRoute]Guid key, CancellationToken cancellationToken)
     {
         await locationService.DeleteAsync(key, cancellationToken);

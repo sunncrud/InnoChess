@@ -14,6 +14,7 @@ namespace InnoChess.Presentation.Controllers;
 public class UserInSessionController(IUserInSessionService userInSessionService) 
 {
     [HttpGet]
+    [Authorize(Roles = "Admin")]
     public async Task<ActionResult<PagedResult<UserInSessionResponse>>> GetAll([FromQuery] PageParams pageParams, CancellationToken cancellationToken)
     {
         var entities = userInSessionService.GetAllAsync(pageParams, cancellationToken);
@@ -21,6 +22,7 @@ public class UserInSessionController(IUserInSessionService userInSessionService)
     }
 
     [HttpGet("{id:guid}")]
+    [Authorize(Roles = "Admin")]
     public async Task<UserInSessionResponse?> GetById([FromRoute]Guid key, CancellationToken cancellationToken)
     {
         var entity = await userInSessionService.GetByIdAsync(key, cancellationToken);
@@ -28,12 +30,14 @@ public class UserInSessionController(IUserInSessionService userInSessionService)
     }
 
     [HttpPut("{id:guid}")]
+    [Authorize(Roles = "Admin")]
     public async Task Update([FromBody]UserInSessionRequest request, CancellationToken cancellationToken)
     {
         await userInSessionService.UpdateAsync(request, cancellationToken);
     }
     
     [HttpPost]
+    [Authorize(Roles = "Admin")]
     public async Task<Guid> Create([FromBody]UserInSessionRequest request, CancellationToken cancellationToken)
     {
         var entity = await userInSessionService.CreateAsync(request, cancellationToken);
@@ -41,6 +45,7 @@ public class UserInSessionController(IUserInSessionService userInSessionService)
     }
 
     [HttpDelete("{id:guid}")]
+    [Authorize(Roles = "Admin")]
     public async Task<Guid> Delete([FromRoute]Guid key, CancellationToken cancellationToken)
     {
         await userInSessionService.DeleteAsync(key, cancellationToken);

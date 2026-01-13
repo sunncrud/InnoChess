@@ -10,8 +10,6 @@ public static class ApiExtension
 {
     public static void AddApiAuthentication(this IServiceCollection services)
     {
-        // We don't pass configuration or options as a parameter anymore.
-        // Instead, we tell the JwtBearer to "look up" the options when it needs them.
         services.AddOptions<JwtBearerOptions>(JwtBearerDefaults.AuthenticationScheme)
             .Configure<IOptions<JwtOptions>>((options, jwtOptions) =>
             {
@@ -39,9 +37,16 @@ public static class ApiExtension
             {
                 options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
                 options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
             })
-            .AddJwtBearer(); // This now uses the configuration defined above
+            .AddJwtBearer();
 
-        services.AddAuthorization();
+        services.AddAuthorization(options =>
+        {
+            options.AddPolicy("AdminPolicy", policy =>
+            {
+                policy.RequireRole("role", "admin");
+            });
+        });
     }
 }

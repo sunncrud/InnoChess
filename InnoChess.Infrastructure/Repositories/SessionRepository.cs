@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InnoChess.Infrastructure.Repositories;
 
-public class SessionRepository(InnoChessDbContext context) : RepositoryBase<SessionEntity, Guid>(context), ISessionRepository
+public class SessionRepository(InnoChessDbContext context) : RepositoryBase<SessionEntity>(context), ISessionRepository
 {
     private readonly InnoChessDbContext _context = context;
 

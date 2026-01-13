@@ -13,6 +13,7 @@ using InnoChess.Infrastructure;
 using InnoChess.Infrastructure.Repositories;
 using InnoChess.Presentation.Endpoints;
 using InnoChess.Presentation.Extensions;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,10 +24,10 @@ services.AddControllers();
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
-services.AddScoped<IRepositoryBase<LocationEntity, Guid>, LocationRepository>();
-services.AddScoped<IRepositoryBase<UserEntity, Guid>, UserRepository>();
-services.AddScoped<IRepositoryBase<SessionEntity, Guid>, SessionRepository>();
-services.AddScoped<IRepositoryBase<UserInSessionEntity, Guid>, UserInSessionRepository >();
+services.AddScoped<IRepositoryBase<LocationEntity>, LocationRepository>();
+services.AddScoped<IRepositoryBase<UserEntity>, UserRepository>();
+services.AddScoped<IRepositoryBase<SessionEntity>, SessionRepository>();
+services.AddScoped<IRepositoryBase<UserInSessionEntity>, UserInSessionRepository >();
 
 services.AddScoped<IUserRepository, UserRepository>();
 services.AddScoped<ILocationRepository, LocationRepository>();
@@ -56,6 +57,7 @@ services.AddDbContext<InnoChessDbContext>(options =>
     var connectionString = configuration.GetConnectionString("InnoChessDbContext");
     options.UseSqlServer(connectionString);
 });
+
 
 var app = builder.Build();
 

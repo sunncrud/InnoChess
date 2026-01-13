@@ -1,11 +1,12 @@
 ﻿using InnoChess.Domain.Models;
+using InnoChess.Domain.Primitives;
 using InnoChess.Domain.RepositoryContracts;
 using Microsoft.EntityFrameworkCore;
 
 namespace InnoChess.Infrastructure.Repositories
 {
-    public class RepositoryBase<TEntity, TKey>(InnoChessDbContext context) : IRepositoryBase<TEntity, TKey>
-        where TEntity : Entity<TKey>
+    public class RepositoryBase<TEntity>(InnoChessDbContext context) : IRepositoryBase<TEntity>
+        where TEntity : class, IEntity<Guid>
     { 
         public async Task<List<TEntity>> GetAllAsync(CancellationToken cancellationToken)
         {
@@ -19,14 +20,14 @@ namespace InnoChess.Infrastructure.Repositories
             return context.Set<TEntity>().AsNoTracking();
         }
         
-        public async Task<TEntity?> GetByIdAsync(TKey id, CancellationToken cancellationToken)
+        public async Task<TEntity?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
             return await context.Set<TEntity>()
                 .AsNoTracking()
                 .FirstOrDefaultAsync(x => x.Id.Equals(id), cancellationToken);
         }
 
-        public async Task<TKey> CreateAsync(TEntity entity, CancellationToken cancellationToken)
+        public async Task<Guid> CreateAsync(TEntity entity, CancellationToken cancellationToken)
         {
             await context.Set<TEntity>()
                 .AddAsync(entity, cancellationToken);
@@ -34,7 +35,7 @@ namespace InnoChess.Infrastructure.Repositories
                 .SaveChangesAsync(cancellationToken);
             return entity.Id;
         }
-        public async Task<TKey?> UpdateAsync(TEntity entity, CancellationToken cancellationToken)
+        public async Task<Guid?> UpdateAsync(TEntity entity, CancellationToken cancellationToken)
         {
             context.Set<TEntity>()
                 .Update(entity);
@@ -42,7 +43,7 @@ namespace InnoChess.Infrastructure.Repositories
             return entity.Id;
         }
 
-        public async Task<TKey?> DeleteAsync(TKey id, CancellationToken cancellationToken)
+        public async Task<Guid?> DeleteAsync(Guid id, CancellationToken cancellationToken)
         {
             var entity = await GetByIdAsync(id, cancellationToken);
             if (entity != null) context.Set<TEntity>()

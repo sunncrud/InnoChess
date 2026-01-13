@@ -16,6 +16,7 @@ public static class UserEndpoint
     {
         await userService.Register(registerUserRequest.UserName, registerUserRequest.Email, 
             registerUserRequest.Password, cancellationToken);
+        
         return Results.Ok();
     }
 

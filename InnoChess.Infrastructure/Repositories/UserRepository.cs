@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InnoChess.Infrastructure.Repositories;
 
-public class UserRepository(InnoChessDbContext context) : RepositoryBase<UserEntity, Guid>(context), IUserRepository
+public class UserRepository(InnoChessDbContext context) : RepositoryBase<UserEntity>(context), IUserRepository
 {
     private readonly InnoChessDbContext _context = context;
 
