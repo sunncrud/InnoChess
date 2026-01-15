@@ -1,4 +1,5 @@
-﻿using InnoChess.Application.DTO.SessionDto;
+﻿using FluentValidation;
+using InnoChess.Application.DTO.SessionDto;
 using InnoChess.Application.Pagination;
 using InnoChess.Application.ServiceContracts;
 using Microsoft.AspNetCore.Authorization;
@@ -12,7 +13,7 @@ namespace InnoChess.Presentation.Controllers;
 [ProducesResponseType(StatusCodes.Status404NotFound)]
 [ProducesResponseType(StatusCodes.Status400BadRequest)]
 [Route("sessions")]
-public class SessionController(ISessionService sessionService) 
+public class SessionController(ISessionService sessionService, IValidator<SessionRequest> sessionValidator) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<PagedResult<SessionResponse>>> GetAll([FromQuery] PageParams pageParams, CancellationToken cancellationToken)
@@ -22,27 +23,40 @@ public class SessionController(ISessionService sessionService)
     }
 
     [HttpGet("{id:guid}")]
-    public async Task<SessionResponse?> GetById([FromRoute]Guid key, CancellationToken cancellationToken)
+    public async Task<ActionResult<SessionResponse?>> GetById([FromRoute]Guid key, CancellationToken cancellationToken)
     {
         var entity = await sessionService.GetByIdAsync(key, cancellationToken);
         return entity;
     }
 
     [HttpPut("{id:guid}")]
-    public async Task Update([FromBody]SessionRequest request, CancellationToken cancellationToken)
+    public async Task<ActionResult> Update([FromBody]SessionRequest request, CancellationToken cancellationToken)
     {
+        var validationResult = await sessionValidator.ValidateAsync(request, cancellationToken);
+        if (!validationResult.IsValid)
+        {
+            return ValidationProblem(new ValidationProblemDetails(validationResult.ToDictionary()));
+        }   
+        
         await sessionService.UpdateAsync(request, cancellationToken);
+        return Ok();
     }
     
     [HttpPost]
-    public async Task<Guid> Create([FromBody]SessionRequest request, CancellationToken cancellationToken)
+    public async Task<ActionResult<Guid>> Create([FromBody]SessionRequest request, CancellationToken cancellationToken)
     {
+        var validationResult = await sessionValidator.ValidateAsync(request, cancellationToken);
+        if (!validationResult.IsValid)
+        {
+            return ValidationProblem(new ValidationProblemDetails(validationResult.ToDictionary()));
+        }   
+        
         var entity = await sessionService.CreateAsync(request, cancellationToken);
         return entity;
     }
 
     [HttpDelete("{id:guid}")]
-    public async Task<Guid> Delete([FromRoute]Guid key, CancellationToken cancellationToken)
+    public async Task<ActionResult<Guid>> Delete([FromRoute]Guid key, CancellationToken cancellationToken)
     {
         await sessionService.DeleteAsync(key, cancellationToken);
         return key;

@@ -13,7 +13,7 @@ namespace InnoChess.Presentation.Controllers;
 [ProducesResponseType(StatusCodes.Status404NotFound)]
 [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 [Route("users")]
-public class UserController(IUserService userService) 
+public class UserController(IUserService userService) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<PagedResult<UserResponse>>> GetAll([FromQuery] PageParams pageParams, CancellationToken cancellationToken)
@@ -23,23 +23,16 @@ public class UserController(IUserService userService)
     }
 
     [HttpGet("{id:guid}")]
-    public async Task<UserResponse?> GetById([FromRoute]Guid key, CancellationToken cancellationToken)
+    public async Task<ActionResult<UserResponse?>> GetById([FromRoute]Guid key, CancellationToken cancellationToken)
     {
         var entity = await userService.GetByIdAsync(key, cancellationToken);
         return entity;
-    }
-
-    [HttpPut("{id:guid}")]
-    [Authorize(Roles = "Admin")]
-    public async Task Update([FromBody]UserRequest request, CancellationToken cancellationToken)
-    {
-        await userService.UpdateAsync(request, cancellationToken);
     }
     
 
     [HttpDelete("{id:guid}")]
     [Authorize(Roles = "Admin")]
-    public async Task<Guid> Delete([FromRoute]Guid key, CancellationToken cancellationToken)
+    public async Task<ActionResult<Guid>> Delete([FromRoute]Guid key, CancellationToken cancellationToken)
     {
         await userService.DeleteAsync(key, cancellationToken);
         return key;

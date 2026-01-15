@@ -1,6 +1,6 @@
-﻿namespace InnoChess.Application.DTO.UserDto;
+﻿namespace InnoChess.Application.DTO.AuthDto;
 
-public record UserRegistrationRequest : BaseDto
+public record UserRegistrationRequest
 {
     public string UserName { get; init; } = string.Empty;
     public string Email { get; init; } =  string.Empty;

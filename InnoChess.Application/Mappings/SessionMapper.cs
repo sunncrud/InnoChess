@@ -11,8 +11,6 @@ public class SessionMapper : ISessionMapper
         return new SessionEntity()
         {
             Name = request.Name,
-            MaxPlayers = request.MaxPlayers,
-            IsActive = request.IsActive,
         };
     }
 

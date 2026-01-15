@@ -1,19 +1,16 @@
+using FluentValidation;
 using InnoChess.Application.Auth;
-using InnoChess.Application.DTO.LocationDto;
-using InnoChess.Application.DTO.SessionDto;
-using InnoChess.Application.DTO.UserDto;
-using InnoChess.Application.DTO.UserInGameDto;
 using InnoChess.Application.MappingContracts;
 using InnoChess.Application.Mappings;
 using InnoChess.Application.ServiceContracts;
 using InnoChess.Application.Services;
+using InnoChess.Application.Validators;
 using InnoChess.Domain.Models;
 using InnoChess.Domain.RepositoryContracts;
 using InnoChess.Infrastructure;
 using InnoChess.Infrastructure.Repositories;
 using InnoChess.Presentation.Endpoints;
 using InnoChess.Presentation.Extensions;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -23,6 +20,7 @@ var configuration = builder.Configuration;
 services.AddControllers();
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
+
 
 services.AddScoped<IRepositoryBase<LocationEntity>, LocationRepository>();
 services.AddScoped<IRepositoryBase<UserEntity>, UserRepository>();
@@ -51,6 +49,13 @@ services.AddScoped<IJwtProvider, JwtProvider>();
 
 services.Configure<JwtOptions>(configuration.GetSection("JwtOptions"));
 services.AddApiAuthentication();
+
+services.AddValidatorsFromAssemblyContaining<UserLoginRequestValidator>();
+services.AddValidatorsFromAssemblyContaining<UserRegistrationRequestValidator>();
+services.AddValidatorsFromAssemblyContaining<UserRequestValidator>();
+services.AddValidatorsFromAssemblyContaining<LocationRequestValidator>();
+services.AddValidatorsFromAssemblyContaining<SessionRequestValidator>();
+services.AddValidatorsFromAssemblyContaining<UserInSessionRequestValidator>();
 
 services.AddDbContext<InnoChessDbContext>(options =>
 {

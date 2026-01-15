@@ -1,4 +1,5 @@
-﻿using InnoChess.Application.DTO.LocationDto;
+﻿using FluentValidation;
+using InnoChess.Application.DTO.LocationDto;
 using InnoChess.Application.Pagination;
 using InnoChess.Application.ServiceContracts;
 using Microsoft.AspNetCore.Authorization;
@@ -12,7 +13,7 @@ namespace InnoChess.Presentation.Controllers;
 [ProducesResponseType(StatusCodes.Status400BadRequest)]
 [ProducesResponseType(StatusCodes.Status404NotFound)]
 [Route("api/[controller]")]
-public class LocationController(ILocationService locationService)
+public class LocationController(ILocationService locationService, IValidator<LocationRequest> locationValidator) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<PagedResult<LocationResponse>>> GetAll([FromQuery] PageParams pageParams, CancellationToken cancellationToken)
@@ -22,7 +23,7 @@ public class LocationController(ILocationService locationService)
     }
 
     [HttpGet("{id:guid}")]
-    public async Task<LocationResponse?> GetById([FromRoute]Guid key, CancellationToken cancellationToken)
+    public async Task<ActionResult<LocationResponse?>> GetById([FromRoute]Guid key, CancellationToken cancellationToken)
     {
         var entity = await locationService.GetByIdAsync(key, cancellationToken);
         return entity;
@@ -30,22 +31,35 @@ public class LocationController(ILocationService locationService)
 
     [HttpPut("{id:guid}")]
     [Authorize(Roles = "Admin")]
-    public async Task Update([FromBody]LocationRequest request, CancellationToken cancellationToken)
+    public async Task<ActionResult> Update([FromBody]LocationRequest request, CancellationToken cancellationToken)
     {
+        var validationResult = await locationValidator.ValidateAsync(request, cancellationToken);
+        if (!validationResult.IsValid)
+        {
+            return ValidationProblem(new ValidationProblemDetails(validationResult.ToDictionary()));
+        }   
+        
         await locationService.UpdateAsync(request, cancellationToken);
+        return Ok();
     }
     
     [HttpPost]
     [Authorize(Roles = "Admin")]
-    public async Task<Guid> Create([FromBody]LocationRequest request, CancellationToken cancellationToken)
+    public async Task<ActionResult<Guid>> Create([FromBody]LocationRequest request, CancellationToken cancellationToken)
     {
+        var validationResult = await locationValidator.ValidateAsync(request, cancellationToken);
+        if (!validationResult.IsValid)
+        {
+            return ValidationProblem(new ValidationProblemDetails(validationResult.ToDictionary()));
+        }   
+        
         var entity = await locationService.CreateAsync(request, cancellationToken);
         return entity;
     }
 
     [HttpDelete("{id:guid}")]
     [Authorize(Roles = "Admin")]
-    public async Task<Guid> Delete([FromRoute]Guid key, CancellationToken cancellationToken)
+    public async Task<ActionResult<Guid>> Delete([FromRoute]Guid key, CancellationToken cancellationToken)
     {
         await locationService.DeleteAsync(key, cancellationToken);
         return key;

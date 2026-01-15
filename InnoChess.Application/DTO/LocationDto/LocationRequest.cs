@@ -1,6 +1,6 @@
 ﻿namespace InnoChess.Application.DTO.LocationDto;
 
-public record LocationRequest : BaseDto
+public record LocationRequest
 {
     public string Name { get; init; } = string.Empty;
     public int MaxPlayers { get; init; }

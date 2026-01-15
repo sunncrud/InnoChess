@@ -1,6 +1,6 @@
 ﻿namespace InnoChess.Application.DTO.UserDto;
 
-public record UserResponse :  BaseDto
+public record UserResponse 
 {
     public Guid Id { get; init; }
     public string UserName { get; init; } = string.Empty;
