@@ -14,7 +14,7 @@ namespace InnoChess.Presentation.Controllers;
 [ProducesResponseType(StatusCodes.Status404NotFound)]
 [Route("api/[controller]")]
 public class LocationController(ICrudService<LocationRequest, LocationResponse> crudService, 
-    ILocationService locationService, IValidator<LocationRequest> locationValidator) : ControllerBase
+    ILocationService locationService) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<PagedResult<LocationResponse>>> GetAll([FromQuery] PageParams pageParams, CancellationToken cancellationToken)
@@ -34,12 +34,6 @@ public class LocationController(ICrudService<LocationRequest, LocationResponse> 
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult> Update([FromBody]LocationRequest request, CancellationToken cancellationToken)
     {
-        var validationResult = await locationValidator.ValidateAsync(request, cancellationToken);
-        if (!validationResult.IsValid)
-        {
-            return ValidationProblem(new ValidationProblemDetails(validationResult.ToDictionary()));
-        }   
-        
         await crudService.UpdateAsync(request, cancellationToken);
         return Ok();
     }
@@ -48,12 +42,6 @@ public class LocationController(ICrudService<LocationRequest, LocationResponse> 
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult<Guid>> Create([FromBody]LocationRequest request, CancellationToken cancellationToken)
     {
-        var validationResult = await locationValidator.ValidateAsync(request, cancellationToken);
-        if (!validationResult.IsValid)
-        {
-            return ValidationProblem(new ValidationProblemDetails(validationResult.ToDictionary()));
-        }   
-        
         var entity = await crudService.CreateAsync(request, cancellationToken);
         return entity;
     }

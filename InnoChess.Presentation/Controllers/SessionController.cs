@@ -14,7 +14,7 @@ namespace InnoChess.Presentation.Controllers;
 [ProducesResponseType(StatusCodes.Status400BadRequest)]
 [Route("sessions")]
 public class SessionController(ICrudService<SessionRequest, SessionResponse> crudService, 
-    ISessionService sessionService, IValidator<SessionRequest> sessionValidator) : ControllerBase
+    ISessionService sessionService) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<PagedResult<SessionResponse>>> GetAll([FromQuery] PageParams pageParams, CancellationToken cancellationToken)
@@ -33,12 +33,6 @@ public class SessionController(ICrudService<SessionRequest, SessionResponse> cru
     [HttpPut("{id:guid}")]
     public async Task<ActionResult> Update([FromBody]SessionRequest request, CancellationToken cancellationToken)
     {
-        var validationResult = await sessionValidator.ValidateAsync(request, cancellationToken);
-        if (!validationResult.IsValid)
-        {
-            return ValidationProblem(new ValidationProblemDetails(validationResult.ToDictionary()));
-        }   
-        
         await crudService.UpdateAsync(request, cancellationToken);
         return Ok();
     }
@@ -46,12 +40,6 @@ public class SessionController(ICrudService<SessionRequest, SessionResponse> cru
     [HttpPost]
     public async Task<ActionResult<Guid>> Create([FromBody]SessionRequest request, CancellationToken cancellationToken)
     {
-        var validationResult = await sessionValidator.ValidateAsync(request, cancellationToken);
-        if (!validationResult.IsValid)
-        {
-            return ValidationProblem(new ValidationProblemDetails(validationResult.ToDictionary()));
-        }   
-        
         var entity = await crudService.CreateAsync(request, cancellationToken);
         return entity;
     }

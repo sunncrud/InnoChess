@@ -1,5 +1,9 @@
 using FluentValidation;
 using InnoChess.Application.Auth;
+using InnoChess.Application.DTO.LocationDto;
+using InnoChess.Application.DTO.SessionDto;
+using InnoChess.Application.DTO.UserDto;
+using InnoChess.Application.DTO.UserInGameDto;
 using InnoChess.Application.MappingContracts;
 using InnoChess.Application.Mappings;
 using InnoChess.Application.ServiceContracts;
@@ -36,6 +40,15 @@ services.AddScoped<ILocationService, LocationService>();
 services.AddScoped<ISessionService, SessionService>();
 services.AddScoped<IUserService, UserService>();
 services.AddScoped<IUserInSessionService, UserInSessionService>();
+
+services.AddScoped<ICrudService<UserRequest, UserResponse>,
+    CrudService<UserRequest, UserResponse, UserEntity, IUserMapper>>();
+services.AddScoped<ICrudService<LocationRequest, LocationResponse>, 
+    CrudService<LocationRequest, LocationResponse,LocationEntity,ILocationMapper>>();
+services.AddScoped<ICrudService<SessionRequest, SessionResponse>,
+    CrudService<SessionRequest, SessionResponse,SessionEntity,ISessionMapper>>();
+services.AddScoped<ICrudService<UserInSessionRequest, UserInSessionResponse>,
+    CrudService<UserInSessionRequest, UserInSessionResponse, UserInSessionEntity, IUserInSessionMapper>>();
 
 services.AddScoped<UserService>();
 
@@ -77,6 +90,8 @@ using (var scope = app.Services.CreateScope())
     var db = scope.ServiceProvider.GetRequiredService<InnoChessDbContext>();
     db.Database.Migrate();
 }
+
+app.UseMiddleware<GlobalExceptionHandler>();
 
 app.UseHttpsRedirection();
 

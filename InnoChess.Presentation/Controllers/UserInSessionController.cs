@@ -29,8 +29,6 @@ public class UserInSessionController(ICrudService<UserInSessionRequest, UserInSe
         var entity = await crudService.GetByIdAsync(key, cancellationToken);
         return entity;
     }
-    
-    
 
     [HttpDelete("{id:guid}")]
     [Authorize(Roles = "Admin")]
