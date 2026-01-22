@@ -9,7 +9,8 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InnoChess.Application.Services;
 
-public class UserService(IUserMapper userMapper,IUserRepository userRepository,IPasswordHasher passwordHasher, IJwtProvider jwtProvider):IUserService
+public class UserService(IUserMapper userMapper,IUserRepository userRepository,
+    IPasswordHasher passwordHasher, IJwtProvider jwtProvider):IUserService
 {
     public async Task<PagedResult<UserResponse>> GetAllAsync(
         PageParams pageParams, 

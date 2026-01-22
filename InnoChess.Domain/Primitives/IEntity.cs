@@ -2,7 +2,7 @@
 
 namespace InnoChess.Domain.Primitives;
 
-public interface IEntity<out TKey>
+public interface IEntity
 {
-    [Key] TKey? Id { get; }
+    [Key] Guid Id { get; }
 }

@@ -7,7 +7,7 @@ using InnoChess.Domain.Primitives;
 
 namespace InnoChess.Domain.Models;
 
-public class UserInSessionEntity : IEntity<Guid>
+public class UserInSessionEntity : IEntity
 {
     public Guid Id { get; init; }
     public Guid SessionId { get; init; }

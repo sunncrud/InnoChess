@@ -13,19 +13,20 @@ namespace InnoChess.Presentation.Controllers;
 [ProducesResponseType(StatusCodes.Status400BadRequest)]
 [ProducesResponseType(StatusCodes.Status404NotFound)]
 [Route("api/[controller]")]
-public class LocationController(ILocationService locationService, IValidator<LocationRequest> locationValidator) : ControllerBase
+public class LocationController(ICrudService<LocationRequest, LocationResponse> crudService, 
+    ILocationService locationService, IValidator<LocationRequest> locationValidator) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<PagedResult<LocationResponse>>> GetAll([FromQuery] PageParams pageParams, CancellationToken cancellationToken)
     {
-        var entities = locationService.GetAllAsync(pageParams, cancellationToken);
+        var entities = crudService.GetAllAsync(pageParams, cancellationToken);
         return await entities;
     }
 
     [HttpGet("{id:guid}")]
     public async Task<ActionResult<LocationResponse?>> GetById([FromRoute]Guid key, CancellationToken cancellationToken)
     {
-        var entity = await locationService.GetByIdAsync(key, cancellationToken);
+        var entity = await crudService.GetByIdAsync(key, cancellationToken);
         return entity;
     }
 
@@ -39,7 +40,7 @@ public class LocationController(ILocationService locationService, IValidator<Loc
             return ValidationProblem(new ValidationProblemDetails(validationResult.ToDictionary()));
         }   
         
-        await locationService.UpdateAsync(request, cancellationToken);
+        await crudService.UpdateAsync(request, cancellationToken);
         return Ok();
     }
     
@@ -53,7 +54,7 @@ public class LocationController(ILocationService locationService, IValidator<Loc
             return ValidationProblem(new ValidationProblemDetails(validationResult.ToDictionary()));
         }   
         
-        var entity = await locationService.CreateAsync(request, cancellationToken);
+        var entity = await crudService.CreateAsync(request, cancellationToken);
         return entity;
     }
 
@@ -61,7 +62,7 @@ public class LocationController(ILocationService locationService, IValidator<Loc
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult<Guid>> Delete([FromRoute]Guid key, CancellationToken cancellationToken)
     {
-        await locationService.DeleteAsync(key, cancellationToken);
+        await crudService.DeleteAsync(key, cancellationToken);
         return key;
     }
     

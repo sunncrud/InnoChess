@@ -4,7 +4,7 @@ using InnoChess.Domain.Primitives;
 namespace InnoChess.Domain.RepositoryContracts;
 
 public interface IRepositoryBase<TEntity>
-    where TEntity : class, IEntity<Guid>
+    where TEntity : IEntity
 {
     public IQueryable<TEntity> GetQueryable();
     public Task<TEntity?> GetByIdAsync(Guid id, CancellationToken cancellationToken);

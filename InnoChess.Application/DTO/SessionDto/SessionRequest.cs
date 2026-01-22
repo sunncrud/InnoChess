@@ -1,6 +1,6 @@
 ﻿namespace InnoChess.Application.DTO.SessionDto;
 
-public record SessionRequest
+public record SessionRequest : BaseDto
 {
     public string Name { get; init; } = string.Empty;
     public int MaxPlayers { get; init; }

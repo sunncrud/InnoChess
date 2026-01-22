@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 
 namespace InnoChess.Domain.Models;
 
-public class UserEntity : IEntity<Guid>
+public class UserEntity : IEntity
 {
     public Guid Id { get; init; }
     public string UserName { get; init; } = string.Empty;

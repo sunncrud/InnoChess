@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 namespace InnoChess.Infrastructure.Repositories
 {
     public class RepositoryBase<TEntity>(InnoChessDbContext context) : IRepositoryBase<TEntity>
-        where TEntity : class, IEntity<Guid>
+        where TEntity : class, IEntity
     { 
         public async Task<List<TEntity>> GetAllAsync(CancellationToken cancellationToken)
         {

@@ -7,7 +7,7 @@ using InnoChess.Domain.Primitives;
 
 namespace InnoChess.Domain.Models;
 
-public class LocationEntity : IEntity<Guid>
+public class LocationEntity : IEntity
 {
     public Guid Id { get; init; }
     public string Name { get; init; } = string.Empty;
