@@ -11,14 +11,13 @@ namespace InnoChess.Presentation.Controllers;
 [ProducesResponseType(StatusCodes.Status404NotFound)]
 [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 [Route("[controller]")]
-public class UserInSessionController(ICrudService<UserInSessionRequest, UserInSessionResponse> crudService,
-    IUserInSessionService userInSessionService) : ControllerBase
+public class UserInSessionController(IUserInSessionService userInSessionService) : ControllerBase
 {
     [HttpGet]
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult<PagedResult<UserInSessionResponse>>> GetAll([FromQuery] PageParams pageParams, CancellationToken cancellationToken)
     {
-        var entities = crudService.GetAllAsync(pageParams, cancellationToken);
+        var entities = userInSessionService.GetAllAsync(pageParams, cancellationToken);
         return await entities;
     }
 
@@ -26,7 +25,7 @@ public class UserInSessionController(ICrudService<UserInSessionRequest, UserInSe
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult<UserInSessionResponse?>> GetById([FromRoute]Guid key, CancellationToken cancellationToken)
     {
-        var entity = await crudService.GetByIdAsync(key, cancellationToken);
+        var entity = await userInSessionService.GetByIdAsync(key, cancellationToken);
         return entity;
     }
 
@@ -34,7 +33,7 @@ public class UserInSessionController(ICrudService<UserInSessionRequest, UserInSe
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult<Guid>> Delete([FromRoute]Guid key, CancellationToken cancellationToken)
     {
-        await crudService.DeleteAsync(key, cancellationToken);
+        await userInSessionService.DeleteAsync(key, cancellationToken);
         return key;
     }
 }

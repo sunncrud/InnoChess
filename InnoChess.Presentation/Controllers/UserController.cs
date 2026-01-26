@@ -13,19 +13,19 @@ namespace InnoChess.Presentation.Controllers;
 [ProducesResponseType(StatusCodes.Status404NotFound)]
 [ProducesResponseType(StatusCodes.Status500InternalServerError)]
 [Route("users")]
-public class UserController(ICrudService<UserRequest, UserResponse> crudService, IUserService userService) : ControllerBase
+public class UserController(IUserService userService) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<PagedResult<UserResponse>>> GetAll([FromQuery] PageParams pageParams, CancellationToken cancellationToken)
     {
-        var entities = crudService.GetAllAsync(pageParams, cancellationToken);
+        var entities = userService.GetAllAsync(pageParams, cancellationToken);
         return await entities;
     }
 
     [HttpGet("{id:guid}")]
     public async Task<ActionResult<UserResponse?>> GetById([FromRoute]Guid key, CancellationToken cancellationToken)
     {
-        var entity = await crudService.GetByIdAsync(key, cancellationToken);
+        var entity = await userService.GetByIdAsync(key, cancellationToken);
         return entity;
     }
     
@@ -34,7 +34,7 @@ public class UserController(ICrudService<UserRequest, UserResponse> crudService,
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult<Guid>> Delete([FromRoute]Guid key, CancellationToken cancellationToken)
     {
-        await crudService.DeleteAsync(key, cancellationToken);
+        await userService.DeleteAsync(key, cancellationToken);
         return key;
     }
 }

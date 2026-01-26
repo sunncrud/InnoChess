@@ -2,12 +2,15 @@
 using InnoChess.Application.MappingContracts;
 using InnoChess.Application.Pagination;
 using InnoChess.Application.ServiceContracts;
+using InnoChess.Domain.Models;
 using InnoChess.Domain.RepositoryContracts;
 using Microsoft.EntityFrameworkCore;
 
 namespace InnoChess.Application.Services;
 
-public class SessionService(ISessionRepository sessionRepository, ISessionMapper sessionMapper) : ISessionService
+public class SessionService(ISessionRepository sessionRepository, ISessionMapper sessionMapper) 
+    : CrudService<SessionRequest, SessionResponse,SessionEntity,ISessionMapper>
+    (sessionRepository,sessionMapper), ISessionService
 {
     public async Task<PagedResult<SessionResponse>> GetAllAsync(
         PageParams pageParams, 

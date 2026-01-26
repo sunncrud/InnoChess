@@ -13,20 +13,19 @@ namespace InnoChess.Presentation.Controllers;
 [ProducesResponseType(StatusCodes.Status400BadRequest)]
 [ProducesResponseType(StatusCodes.Status404NotFound)]
 [Route("api/[controller]")]
-public class LocationController(ICrudService<LocationRequest, LocationResponse> crudService, 
-    ILocationService locationService) : ControllerBase
+public class LocationController(ILocationService locationService) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<PagedResult<LocationResponse>>> GetAll([FromQuery] PageParams pageParams, CancellationToken cancellationToken)
     {
-        var entities = crudService.GetAllAsync(pageParams, cancellationToken);
+        var entities = locationService.GetAllAsync(pageParams, cancellationToken);
         return await entities;
     }
 
     [HttpGet("{id:guid}")]
     public async Task<ActionResult<LocationResponse?>> GetById([FromRoute]Guid key, CancellationToken cancellationToken)
     {
-        var entity = await crudService.GetByIdAsync(key, cancellationToken);
+        var entity = await locationService.GetByIdAsync(key, cancellationToken);
         return entity;
     }
 
@@ -34,7 +33,7 @@ public class LocationController(ICrudService<LocationRequest, LocationResponse> 
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult> Update([FromBody]LocationRequest request, CancellationToken cancellationToken)
     {
-        await crudService.UpdateAsync(request, cancellationToken);
+        await locationService.UpdateAsync(request, cancellationToken);
         return Ok();
     }
     
@@ -42,7 +41,7 @@ public class LocationController(ICrudService<LocationRequest, LocationResponse> 
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult<Guid>> Create([FromBody]LocationRequest request, CancellationToken cancellationToken)
     {
-        var entity = await crudService.CreateAsync(request, cancellationToken);
+        var entity = await locationService.CreateAsync(request, cancellationToken);
         return entity;
     }
 
@@ -50,7 +49,7 @@ public class LocationController(ICrudService<LocationRequest, LocationResponse> 
     [Authorize(Roles = "Admin")]
     public async Task<ActionResult<Guid>> Delete([FromRoute]Guid key, CancellationToken cancellationToken)
     {
-        await crudService.DeleteAsync(key, cancellationToken);
+        await locationService.DeleteAsync(key, cancellationToken);
         return key;
     }
     

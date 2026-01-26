@@ -3,13 +3,15 @@ using InnoChess.Application.DTO.UserInGameDto;
 using InnoChess.Application.MappingContracts;
 using InnoChess.Application.Pagination;
 using InnoChess.Application.ServiceContracts;
+using InnoChess.Domain.Models;
 using InnoChess.Domain.RepositoryContracts;
 using Microsoft.EntityFrameworkCore;
 
 namespace InnoChess.Application.Services;
 
 public class UserInSessionService(IUserInSessionRepository userInSessionRepository, IUserInSessionMapper userInSessionMapper) 
-    : IUserInSessionService
+    : CrudService<UserInSessionRequest,UserInSessionResponse,UserInSessionEntity,IUserInSessionMapper>
+        (userInSessionRepository,userInSessionMapper), IUserInSessionService
 {
     public async Task<PagedResult<UserInSessionResponse>> GetAllAsync(PageParams pageParams, CancellationToken cancellationToken)
     {

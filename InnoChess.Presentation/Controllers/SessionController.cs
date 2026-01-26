@@ -13,41 +13,40 @@ namespace InnoChess.Presentation.Controllers;
 [ProducesResponseType(StatusCodes.Status404NotFound)]
 [ProducesResponseType(StatusCodes.Status400BadRequest)]
 [Route("sessions")]
-public class SessionController(ICrudService<SessionRequest, SessionResponse> crudService, 
-    ISessionService sessionService) : ControllerBase
+public class SessionController(ISessionService sessionService) : ControllerBase
 {
     [HttpGet]
     public async Task<ActionResult<PagedResult<SessionResponse>>> GetAll([FromQuery] PageParams pageParams, CancellationToken cancellationToken)
     {
-        var entities = crudService.GetAllAsync(pageParams, cancellationToken);
+        var entities = sessionService.GetAllAsync(pageParams, cancellationToken);
         return await entities;
     }
 
     [HttpGet("{id:guid}")]
     public async Task<ActionResult<SessionResponse?>> GetById([FromRoute]Guid key, CancellationToken cancellationToken)
     {
-        var entity = await crudService.GetByIdAsync(key, cancellationToken);
+        var entity = await sessionService.GetByIdAsync(key, cancellationToken);
         return entity;
     }
 
     [HttpPut("{id:guid}")]
     public async Task<ActionResult> Update([FromBody]SessionRequest request, CancellationToken cancellationToken)
     {
-        await crudService.UpdateAsync(request, cancellationToken);
+        await sessionService.UpdateAsync(request, cancellationToken);
         return Ok();
     }
     
     [HttpPost]
     public async Task<ActionResult<Guid>> Create([FromBody]SessionRequest request, CancellationToken cancellationToken)
     {
-        var entity = await crudService.CreateAsync(request, cancellationToken);
+        var entity = await sessionService.CreateAsync(request, cancellationToken);
         return entity;
     }
 
     [HttpDelete("{id:guid}")]
     public async Task<ActionResult<Guid>> Delete([FromRoute]Guid key, CancellationToken cancellationToken)
     {
-        await crudService.DeleteAsync(key, cancellationToken);
+        await sessionService.DeleteAsync(key, cancellationToken);
         return key;
     }
     

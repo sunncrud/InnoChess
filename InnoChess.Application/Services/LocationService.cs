@@ -1,13 +1,17 @@
-﻿using InnoChess.Application.DTO.LocationDto;
+﻿using Azure.Core;
+using InnoChess.Application.DTO.LocationDto;
 using InnoChess.Application.MappingContracts;
 using InnoChess.Application.Pagination;
 using InnoChess.Application.ServiceContracts;
+using InnoChess.Domain.Models;
 using InnoChess.Domain.RepositoryContracts;
 using Microsoft.EntityFrameworkCore;
 
 namespace InnoChess.Application.Services;
 
-public class LocationService(ILocationRepository locationRepository, ILocationMapper locationMapper) : ILocationService
+public class LocationService(ILocationRepository locationRepository, ILocationMapper locationMapper) 
+    : CrudService<LocationRequest, LocationResponse, LocationEntity,ILocationMapper>
+        (locationRepository, locationMapper), ILocationService
 {
     
     public async Task<LocationResponse?> GetLocationByNameAsync(string name, CancellationToken cancellationToken)

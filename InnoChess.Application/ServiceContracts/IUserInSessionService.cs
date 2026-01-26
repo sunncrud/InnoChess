@@ -4,7 +4,7 @@ using InnoChess.Application.Pagination;
 
 namespace InnoChess.Application.ServiceContracts;
 
-public interface IUserInSessionService
+public interface IUserInSessionService : ICrudService<UserInSessionRequest, UserInSessionResponse>
 {
    
 }
