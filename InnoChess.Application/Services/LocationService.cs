@@ -1,11 +1,8 @@
-﻿using Azure.Core;
-using InnoChess.Application.DTO.LocationDto;
+﻿using InnoChess.Application.DTO.LocationDto;
 using InnoChess.Application.MappingContracts;
-using InnoChess.Application.Pagination;
 using InnoChess.Application.ServiceContracts;
 using InnoChess.Domain.Models;
 using InnoChess.Domain.RepositoryContracts;
-using Microsoft.EntityFrameworkCore;
 
 namespace InnoChess.Application.Services;
 

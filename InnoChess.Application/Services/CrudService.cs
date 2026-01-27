@@ -1,9 +1,7 @@
 ﻿﻿using InnoChess.Application.DTO;
 using InnoChess.Application.MappingContracts;
-using InnoChess.Application.Mappings;
 using InnoChess.Application.Pagination;
 using InnoChess.Application.ServiceContracts;
-using InnoChess.Domain.Models;
 using InnoChess.Domain.Primitives;
 using InnoChess.Domain.RepositoryContracts;
 using Microsoft.EntityFrameworkCore;

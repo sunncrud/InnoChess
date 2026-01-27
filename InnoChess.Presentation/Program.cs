@@ -25,12 +25,6 @@ services.AddControllers();
 services.AddEndpointsApiExplorer();
 services.AddSwaggerGen();
 
-
-services.AddScoped<IRepositoryBase<LocationEntity>, LocationRepository>();
-services.AddScoped<IRepositoryBase<UserEntity>, UserRepository>();
-services.AddScoped<IRepositoryBase<SessionEntity>, SessionRepository>();
-services.AddScoped<IRepositoryBase<UserInSessionEntity>, UserInSessionRepository >();
-
 services.AddScoped<IUserRepository, UserRepository>();
 services.AddScoped<ILocationRepository, LocationRepository>();
 services.AddScoped<ISessionRepository, SessionRepository>();
@@ -40,15 +34,6 @@ services.AddScoped<ILocationService, LocationService>();
 services.AddScoped<ISessionService, SessionService>();
 services.AddScoped<IUserService, UserService>();
 services.AddScoped<IUserInSessionService, UserInSessionService>();
-
-services.AddScoped<ICrudService<UserRequest, UserResponse>,
-    CrudService<UserRequest, UserResponse, UserEntity, IUserMapper>>();
-services.AddScoped<ICrudService<LocationRequest, LocationResponse>, 
-    CrudService<LocationRequest, LocationResponse,LocationEntity,ILocationMapper>>();
-services.AddScoped<ICrudService<SessionRequest, SessionResponse>,
-    CrudService<SessionRequest, SessionResponse,SessionEntity,ISessionMapper>>();
-services.AddScoped<ICrudService<UserInSessionRequest, UserInSessionResponse>,
-    CrudService<UserInSessionRequest, UserInSessionResponse, UserInSessionEntity, IUserInSessionMapper>>();
 
 services.AddScoped<UserService>();
 

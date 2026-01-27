@@ -1,5 +1,4 @@
-﻿using InnoChess.Application.DTO.LocationDto;
-using InnoChess.Application.DTO.UserInGameDto;
+﻿using InnoChess.Application.DTO.UserInGameDto;
 using InnoChess.Application.MappingContracts;
 using InnoChess.Application.Pagination;
 using InnoChess.Application.ServiceContracts;
