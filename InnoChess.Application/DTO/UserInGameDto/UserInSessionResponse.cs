@@ -2,5 +2,5 @@
 
 public record UserInSessionResponse() : BaseDto
 {
-    
+    public Guid SessionId { get; set; }
 }

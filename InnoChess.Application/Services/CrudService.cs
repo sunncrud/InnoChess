@@ -1,28 +1,40 @@
-﻿using InnoChess.Application.DTO;
+﻿﻿using InnoChess.Application.DTO;
 using InnoChess.Application.MappingContracts;
-using InnoChess.Application.Mappings;
+using InnoChess.Application.Pagination;
 using InnoChess.Application.ServiceContracts;
-using InnoChess.Domain.Models;
+using InnoChess.Domain.Primitives;
 using InnoChess.Domain.RepositoryContracts;
+using Microsoft.EntityFrameworkCore;
 
 namespace InnoChess.Application.Services;
 
-public class CrudService<TRequest, TResponse, TEntity, TMapper, TKey>(IRepositoryBase<TEntity, TKey> repository, TMapper mapper)
-    : ICrudService<TRequest, TResponse, TKey>
-    where TEntity : Entity<TKey>
+public class CrudService<TRequest, TResponse, TEntity, TMapper>(IRepositoryBase<TEntity> repository, TMapper mapper)
+    : ICrudService<TRequest, TResponse>
+    where TEntity : IEntity
     where TRequest : BaseDto
     where TResponse : BaseDto
     where TMapper : IBaseMapper<TRequest, TResponse, TEntity>
 {
-    public async Task<List<TResponse>> GetAllAsync(CancellationToken cancellationToken)
+    public async Task<PagedResult<TResponse>> GetAllAsync(
+        PageParams pageParams, 
+        CancellationToken cancellationToken)
     {
-        var entities = await repository.GetAllAsync(cancellationToken);
-        return entities
+        var query = repository.GetQueryable();
+        var total = await query.CountAsync(cancellationToken);
+        
+        var pagedEntities = await query
+            .Skip((pageParams.Page - 1) * pageParams.PageSize)
+            .Take(pageParams.PageSize)
+            .ToListAsync(cancellationToken);
+
+        var mappedItems = pagedEntities
             .Select(mapper.FromEntityToResponse)
             .ToList();
+
+        return new PagedResult<TResponse>(mappedItems, total);
     }
 
-    public async Task<TResponse?> GetByIdAsync(TKey id, CancellationToken cancellationToken)
+    public async Task<TResponse?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
     {
         var entity = await repository.GetByIdAsync(id, cancellationToken);
         if (entity == null)
@@ -32,7 +44,7 @@ public class CrudService<TRequest, TResponse, TEntity, TMapper, TKey>(IRepositor
         return user;
     }
 
-    public async Task<TKey> CreateAsync(TRequest request, CancellationToken cancellationToken)
+    public async Task<Guid> CreateAsync(TRequest request, CancellationToken cancellationToken)
     {
         var entity = mapper.FromRequestToEntity(request);
         await repository.CreateAsync(entity, cancellationToken);
@@ -46,7 +58,7 @@ public class CrudService<TRequest, TResponse, TEntity, TMapper, TKey>(IRepositor
         return mapper.FromEntityToResponse(entity);
     }
 
-    public async Task<TKey> DeleteAsync(TKey id, CancellationToken cancellationToken)
+    public async Task<Guid> DeleteAsync(Guid id, CancellationToken cancellationToken)
     {
         await repository.DeleteAsync(id, cancellationToken);
         return id;

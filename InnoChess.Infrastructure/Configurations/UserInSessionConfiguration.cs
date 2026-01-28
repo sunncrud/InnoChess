@@ -1,17 +1,12 @@
 ﻿using InnoChess.Domain.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace InnoChess.Infrastructure.Configurations
 {
-    public class UserInSessionConfiguration : IEntityTypeConfiguration<UserInSession>
+    public class UserInSessionConfiguration : IEntityTypeConfiguration<UserInSessionEntity>
     {
-        public void Configure(EntityTypeBuilder<UserInSession> builder)
+        public void Configure(EntityTypeBuilder<UserInSessionEntity> builder)
         {
             builder.HasKey(x => x.Id);
 

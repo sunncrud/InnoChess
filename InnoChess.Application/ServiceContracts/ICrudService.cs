@@ -1,10 +1,12 @@
-﻿namespace InnoChess.Application.ServiceContracts;
+﻿using InnoChess.Application.Pagination;
 
-public interface ICrudService<in TRequest, TResponse, TKey>
+namespace InnoChess.Application.ServiceContracts;
+
+public interface ICrudService<in TRequest, TResponse>
 {
-    Task<List<TResponse>> GetAllAsync(CancellationToken cancellationToken);
-    Task<TResponse?> GetByIdAsync(TKey id, CancellationToken cancellationToken);
-    Task<TKey> CreateAsync(TRequest request, CancellationToken cancellationToken);
+    Task<PagedResult<TResponse>> GetAllAsync(PageParams parameters, CancellationToken cancellationToken);
+    Task<TResponse?> GetByIdAsync(Guid id, CancellationToken cancellationToken);
+    Task<Guid> CreateAsync(TRequest request, CancellationToken cancellationToken);
     Task<TResponse> UpdateAsync(TRequest request, CancellationToken cancellationToken);
-    Task<TKey> DeleteAsync(TKey id, CancellationToken cancellationToken);
+    Task<Guid> DeleteAsync(Guid id, CancellationToken cancellationToken);
 }

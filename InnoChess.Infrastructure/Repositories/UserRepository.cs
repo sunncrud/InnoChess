@@ -5,7 +5,14 @@ using Microsoft.EntityFrameworkCore;
 
 namespace InnoChess.Infrastructure.Repositories;
 
-public class UserRepository(InnoChessDbContext context) : RepositoryBase<UserEntity, Guid>(context), IUserRepository
+public class UserRepository(InnoChessDbContext context) : RepositoryBase<UserEntity>(context), IUserRepository
 {
-   
+    private readonly InnoChessDbContext _context = context;
+
+    public async Task<UserEntity?> GetByEmail(string email, CancellationToken cancellationToken)
+    {
+        return await _context.Users
+            .AsNoTracking()
+            .FirstOrDefaultAsync(x => x.Email.Equals(email), cancellationToken);
+    }
 }

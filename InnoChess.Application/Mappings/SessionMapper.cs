@@ -11,27 +11,6 @@ public class SessionMapper : ISessionMapper
         return new SessionEntity()
         {
             Name = request.Name,
-            MaxPlayers = request.MaxPlayers,
-            IsActive = request.IsActive,
-        };
-    }
-
-    public SessionEntity FromResponseToEntity(SessionResponse response)
-    {
-        return new SessionEntity()
-        {
-            Name = response.Name,
-            MaxPlayers = response.MaxPlayers,
-        };
-    }
-
-    public SessionRequest FromEntityToRequest(SessionEntity entity)
-    {
-        return new SessionRequest()
-        {
-            Name = entity.Name,
-            MaxPlayers = entity.MaxPlayers,
-            IsActive = entity.IsActive,
         };
     }
 
