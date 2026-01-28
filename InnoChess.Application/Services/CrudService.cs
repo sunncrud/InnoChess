@@ -1,14 +1,18 @@
-﻿﻿using InnoChess.Application.DTO;
+﻿using InnoChess.Application.DTO;
 using InnoChess.Application.MappingContracts;
 using InnoChess.Application.Pagination;
 using InnoChess.Application.ServiceContracts;
 using InnoChess.Domain.Primitives;
 using InnoChess.Domain.RepositoryContracts;
+using InnoChess.Application.Caching; 
 using Microsoft.EntityFrameworkCore;
 
 namespace InnoChess.Application.Services;
 
-public class CrudService<TRequest, TResponse, TEntity, TMapper>(IRepositoryBase<TEntity> repository, TMapper mapper)
+public class CrudService<TRequest, TResponse, TEntity, TMapper>(
+    IRepositoryBase<TEntity> repository, 
+    TMapper mapper,
+    ICacheService cacheService) 
     : ICrudService<TRequest, TResponse>
     where TEntity : IEntity
     where TRequest : BaseDto
@@ -36,12 +40,20 @@ public class CrudService<TRequest, TResponse, TEntity, TMapper>(IRepositoryBase<
 
     public async Task<TResponse?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        var entity = await repository.GetByIdAsync(id, cancellationToken);
-        if (entity == null)
-            return null;
+        string key = $"{typeof(TEntity).Name.ToLower()}-{id}";
 
-        var user = mapper.FromEntityToResponse(entity);
-        return user;
+        return await cacheService.GetOrCreateAsync(
+            key,
+            async (ct) => 
+            {
+                var entity = await repository.GetByIdAsync(id, ct);
+                if (entity == null)
+                    return null;
+
+                return mapper.FromEntityToResponse(entity);
+            },
+            null, 
+            cancellationToken);
     }
 
     public async Task<Guid> CreateAsync(TRequest request, CancellationToken cancellationToken)
@@ -50,17 +62,25 @@ public class CrudService<TRequest, TResponse, TEntity, TMapper>(IRepositoryBase<
         await repository.CreateAsync(entity, cancellationToken);
         return entity.Id;   
     }
-
+    
     public async Task<TResponse> UpdateAsync(TRequest request, CancellationToken cancellationToken)
     {
         var entity = mapper.FromRequestToEntity(request);
         await repository.UpdateAsync(entity, cancellationToken);
+        
+        string key = $"{typeof(TEntity).Name.ToLower()}-{entity.Id}";
+        cacheService.Remove(key);
+
         return mapper.FromEntityToResponse(entity);
     }
-
+    
     public async Task<Guid> DeleteAsync(Guid id, CancellationToken cancellationToken)
     {
         await repository.DeleteAsync(id, cancellationToken);
+        
+        string key = $"{typeof(TEntity).Name.ToLower()}-{id}";
+        cacheService.Remove(key);
+        
         return id;
     }
 }

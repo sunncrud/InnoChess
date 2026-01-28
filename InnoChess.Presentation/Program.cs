@@ -1,5 +1,6 @@
 using FluentValidation;
 using InnoChess.Application.Auth;
+using InnoChess.Application.Caching;
 using InnoChess.Application.DTO.LocationDto;
 using InnoChess.Application.DTO.SessionDto;
 using InnoChess.Application.DTO.UserDto;
@@ -41,6 +42,9 @@ services.AddScoped<IUserMapper, UserMapper>();
 services.AddScoped<ILocationMapper, LocationMapper>();
 services.AddScoped<ISessionMapper, SessionMapper>();
 services.AddScoped<IUserInSessionMapper, UserInSessionMapper>();
+
+services.AddMemoryCache();
+services.AddSingleton<ICacheService,InMemoryCacheService>();
 
 services.AddScoped<IPasswordHasher, PasswordHasher>();
 services.AddScoped<IJwtProvider, JwtProvider>();
