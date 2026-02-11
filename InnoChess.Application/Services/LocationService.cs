@@ -1,4 +1,5 @@
-﻿using InnoChess.Application.DTO.LocationDto;
+﻿using InnoChess.Application.Caching; 
+using InnoChess.Application.DTO.LocationDto;
 using InnoChess.Application.MappingContracts;
 using InnoChess.Application.ServiceContracts;
 using InnoChess.Domain.Models;
@@ -6,20 +7,27 @@ using InnoChess.Domain.RepositoryContracts;
 
 namespace InnoChess.Application.Services;
 
-public class LocationService(ILocationRepository locationRepository, ILocationMapper locationMapper) 
-    : CrudService<LocationRequest, LocationResponse, LocationEntity,ILocationMapper>
-        (locationRepository, locationMapper), ILocationService
+public class LocationService(
+    ILocationRepository locationRepository,
+    ILocationMapper locationMapper, 
+    ICacheService cacheService) 
+    : CrudService<LocationRequest, LocationResponse, LocationEntity, ILocationMapper>
+        (locationRepository, locationMapper, cacheService), ILocationService
 {
-    
+
     public async Task<LocationResponse?> GetLocationByNameAsync(string name, CancellationToken cancellationToken)
     {
-        var entity = await locationRepository.GetByNameAsync(name, cancellationToken);
-        return locationMapper.FromEntityToResponse(entity);
+        return await GetCachedResultAsync(
+            $"location-name-{name}", 
+            ct => locationRepository.GetByNameAsync(name, ct), 
+            cancellationToken);
     }
 
     public async Task<LocationResponse?> GetLocationByDescriptionAsync(string description, CancellationToken cancellationToken)
     {
-        var entities = await locationRepository.GetByDescriptionAsync(description, cancellationToken);
-        return locationMapper.FromEntityToResponse(entities);
+        return await GetCachedResultAsync(
+            $"location-description-{description}",
+            ct => locationRepository.GetByDescriptionAsync(description, ct),
+            cancellationToken);
     }
 }
