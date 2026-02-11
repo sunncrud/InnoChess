@@ -13,13 +13,12 @@ public class SessionService(ISessionRepository sessionRepository, ISessionMapper
     : CrudService<SessionRequest, SessionResponse,SessionEntity,ISessionMapper>
     (sessionRepository, sessionMapper, cacheService), ISessionService
 {
-    private readonly ISessionMapper _sessionMapper = sessionMapper;
 
     public async Task<List<SessionResponse>> GetAllActiveAsync(CancellationToken cancellationToken)
     {
         var entities = await sessionRepository.GetAllActiveAsync(cancellationToken);
         return entities
-            .Select (_sessionMapper.FromEntityToResponse)
+            .Select (Mapper.FromEntityToResponse)
             .ToList();
     }
 }

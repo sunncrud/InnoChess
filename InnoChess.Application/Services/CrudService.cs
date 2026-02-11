@@ -19,6 +19,8 @@ public class CrudService<TRequest, TResponse, TEntity, TMapper>(
     where TResponse : BaseDto
     where TMapper : IBaseMapper<TRequest, TResponse, TEntity>
 {
+    protected readonly TMapper Mapper = mapper;
+
     public async Task<PagedResult<TResponse>> GetAllAsync(
         PageParams pageParams, 
         CancellationToken cancellationToken)
@@ -32,7 +34,7 @@ public class CrudService<TRequest, TResponse, TEntity, TMapper>(
             .ToListAsync(cancellationToken);
 
         var mappedItems = pagedEntities
-            .Select(mapper.FromEntityToResponse)
+            .Select(Mapper.FromEntityToResponse)
             .ToList();
 
         return new PagedResult<TResponse>(mappedItems, total);
@@ -40,47 +42,62 @@ public class CrudService<TRequest, TResponse, TEntity, TMapper>(
 
     public async Task<TResponse?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
     {
-        string key = $"{typeof(TEntity).Name.ToLower()}-{id}";
+        var key = GetCacheKey(id);
 
-        return await cacheService.GetOrCreateAsync(
+        return await GetCachedResultAsync(
             key,
-            async (ct) => 
-            {
-                var entity = await repository.GetByIdAsync(id, ct);
-                if (entity == null)
-                    return null;
-
-                return mapper.FromEntityToResponse(entity);
-            },
-            null, 
-            cancellationToken);
+            ct => repository.GetByIdAsync(id, ct),
+            cancellationToken
+        );
     }
 
     public async Task<Guid> CreateAsync(TRequest request, CancellationToken cancellationToken)
     {
-        var entity = mapper.FromRequestToEntity(request);
+        var entity = Mapper.FromRequestToEntity(request);
         await repository.CreateAsync(entity, cancellationToken);
         return entity.Id;   
     }
     
     public async Task<TResponse> UpdateAsync(TRequest request, CancellationToken cancellationToken)
     {
-        var entity = mapper.FromRequestToEntity(request);
+        var entity = Mapper.FromRequestToEntity(request);
         await repository.UpdateAsync(entity, cancellationToken);
         
-        string key = $"{typeof(TEntity).Name.ToLower()}-{entity.Id}";
-        cacheService.Remove(key);
+        InvalidateCache(entity.Id);
 
-        return mapper.FromEntityToResponse(entity);
+        return Mapper.FromEntityToResponse(entity);
     }
     
     public async Task<Guid> DeleteAsync(Guid id, CancellationToken cancellationToken)
     {
         await repository.DeleteAsync(id, cancellationToken);
-        
-        string key = $"{typeof(TEntity).Name.ToLower()}-{id}";
-        cacheService.Remove(key);
+        InvalidateCache(id);
         
         return id;
+    }
+    
+    protected async Task<TResponse?> GetCachedResultAsync(
+        string key,
+        Func<CancellationToken, Task<TEntity?>> fetchEntity,
+        CancellationToken cancellationToken,
+        TimeSpan? expiration = null)
+    {
+        return await cacheService.GetOrCreateAsync(key, async ct =>
+            {
+                var entity = await fetchEntity(ct);
+                return entity == null ? null : Mapper.FromEntityToResponse(entity);
+            }, 
+            expiration, 
+            cancellationToken);
+    }
+    private static string GetCacheKey(Guid id) 
+    {
+        return $"{typeof(TEntity).Name.ToLower()}-{id}";
+    }
+
+    private void InvalidateCache(Guid id)
+    {
+        var key = GetCacheKey(id);
+        cacheService.Remove(key);
     }
 }
