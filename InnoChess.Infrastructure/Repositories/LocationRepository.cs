@@ -26,5 +26,4 @@ public class LocationRepository(InnoChessDbContext context) : RepositoryBase<Loc
             .AsNoTracking()
             .FirstOrDefaultAsync(x => EF.Functions.Like(x.Description, likePattern), cancellationToken);
     }
-
 }
