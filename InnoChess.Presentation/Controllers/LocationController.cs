@@ -23,7 +23,7 @@ public class LocationController(ILocationService locationService) : ControllerBa
     }
 
     [HttpGet("{id:guid}")]
-    public async Task<ActionResult<LocationResponse?>> GetById([FromRoute]Guid key, CancellationToken cancellationToken)
+    public async Task<ActionResult<LocationResponse?>> GetById([FromQuery]Guid key, CancellationToken cancellationToken)
     {
         var entity = await locationService.GetByIdAsync(key, cancellationToken);
         return entity;
@@ -54,15 +54,15 @@ public class LocationController(ILocationService locationService) : ControllerBa
     }
     
     
-    [HttpGet("{by-name}")]
-    public async Task<ActionResult<LocationResponse?>> GetByNameAsync([FromBody]string name, CancellationToken cancellationToken)
+    [HttpGet("by-name")]
+    public async Task<ActionResult<LocationResponse?>> GetByNameAsync([FromQuery]string name, CancellationToken cancellationToken)
     {
         var entity = await locationService.GetLocationByNameAsync(name, cancellationToken);
         return entity;
     }
     
-    [HttpGet("{by-description}")]
-    public async Task<ActionResult<LocationResponse?>> GetByDescriptionAsync([FromBody]string description, CancellationToken cancellationToken)
+    [HttpGet("by-description")]
+    public async Task<ActionResult<LocationResponse?>> GetByDescriptionAsync([FromQuery]string description, CancellationToken cancellationToken)
     {
         var entity = await locationService.GetLocationByDescriptionAsync(description, cancellationToken);
         return entity;

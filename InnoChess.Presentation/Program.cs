@@ -1,16 +1,11 @@
 using FluentValidation;
 using InnoChess.Application.Auth;
 using InnoChess.Application.Caching;
-using InnoChess.Application.DTO.LocationDto;
-using InnoChess.Application.DTO.SessionDto;
-using InnoChess.Application.DTO.UserDto;
-using InnoChess.Application.DTO.UserInGameDto;
 using InnoChess.Application.MappingContracts;
 using InnoChess.Application.Mappings;
 using InnoChess.Application.ServiceContracts;
 using InnoChess.Application.Services;
 using InnoChess.Application.Validators;
-using InnoChess.Domain.Models;
 using InnoChess.Domain.RepositoryContracts;
 using InnoChess.Infrastructure;
 using InnoChess.Infrastructure.Repositories;
@@ -65,19 +60,12 @@ services.AddDbContext<InnoChessDbContext>(options =>
     options.UseSqlServer(connectionString);
 });
 
-
 var app = builder.Build();
 
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-}
-
-using (var scope = app.Services.CreateScope())
-{
-    var db = scope.ServiceProvider.GetRequiredService<InnoChessDbContext>();
-    db.Database.Migrate();
 }
 
 app.UseMiddleware<GlobalExceptionHandler>();
@@ -92,3 +80,5 @@ app.MapUserEndpoints();
 app.MapControllers();
 
 app.Run();
+
+public partial class Program(){}
