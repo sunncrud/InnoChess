@@ -1,4 +1,6 @@
-﻿namespace InnoChess.Application.DTO.LocationDto;
+﻿using InnoNuggetPackage.Dto;
+
+namespace InnoChess.Application.DTO.LocationDto;
 
 public record LocationResponse : BaseDto
 {

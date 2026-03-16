@@ -1,7 +1,6 @@
-﻿using FluentValidation;
-using InnoChess.Application.DTO.SessionDto;
-using InnoChess.Application.Pagination;
+﻿using InnoChess.Application.DTO.SessionDto;
 using InnoChess.Application.ServiceContracts;
+using InnoNuggetPackage.Pagination;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

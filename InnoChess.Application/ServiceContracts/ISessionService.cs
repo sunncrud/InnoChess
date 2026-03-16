@@ -1,7 +1,5 @@
 ﻿using InnoChess.Application.DTO.SessionDto;
-using InnoChess.Application.MappingContracts;
-using InnoChess.Application.Pagination;
-using InnoChess.Domain.Models;
+using InnoNuggetPackage.ServiceContracts;
 
 namespace InnoChess.Application.ServiceContracts;
 

@@ -1,4 +1,4 @@
-﻿using System.Text.Json.Serialization;
+﻿using InnoNuggetPackage.Dto;
 
 namespace InnoChess.Application.DTO.UserDto;
 

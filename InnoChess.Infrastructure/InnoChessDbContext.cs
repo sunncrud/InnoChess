@@ -1,10 +1,11 @@
 ﻿using InnoChess.Domain.Models;
 using InnoChess.Infrastructure.Configurations;
+using InnoNuggetPackage;
 using Microsoft.EntityFrameworkCore;
 
 namespace InnoChess.Infrastructure;
 
-public sealed class InnoChessDbContext(DbContextOptions<InnoChessDbContext> options) : DbContext(options)
+public sealed class InnoChessDbContext(DbContextOptions<InnoDbContext> options) : InnoDbContext(options)
 {
     public DbSet<UserEntity> Users { get; set; }
     public DbSet<LocationEntity> Locations { get; set; }

@@ -1,5 +1,6 @@
 ﻿using InnoChess.Application.DTO.UserDto;
 using InnoChess.Domain.Models;
+using InnoNuggetPackage.Mappers;
 
 namespace InnoChess.Application.MappingContracts;
 

@@ -1,4 +1,6 @@
-﻿namespace InnoChess.Application.DTO.AuthDto;
+﻿using InnoNuggetPackage.Dto;
+
+namespace InnoChess.Application.DTO.AuthDto;
 
 public record UserRegistrationRequest : BaseDto
 {
