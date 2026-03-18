@@ -1,6 +1,6 @@
 ﻿using InnoChess.Application.DTO.UserInGameDto;
-using InnoChess.Application.Pagination;
 using InnoChess.Application.ServiceContracts;
+using InnoNuggetPackage.Pagination;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

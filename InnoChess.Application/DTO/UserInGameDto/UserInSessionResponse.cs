@@ -1,4 +1,6 @@
-﻿namespace InnoChess.Application.DTO.UserInGameDto;
+﻿using InnoNuggetPackage.Dto;
+
+namespace InnoChess.Application.DTO.UserInGameDto;
 
 public record UserInSessionResponse() : BaseDto
 {

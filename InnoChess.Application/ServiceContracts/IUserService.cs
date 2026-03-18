@@ -1,5 +1,5 @@
 ﻿using InnoChess.Application.DTO.UserDto;
-using InnoChess.Application.Pagination;
+using InnoNuggetPackage.ServiceContracts;
 
 namespace InnoChess.Application.ServiceContracts;
 

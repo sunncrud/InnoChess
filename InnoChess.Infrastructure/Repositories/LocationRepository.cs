@@ -1,10 +1,12 @@
-﻿using InnoChess.Domain.Models;
+﻿
+using InnoChess.Domain.Models;
 using InnoChess.Domain.RepositoryContracts;
+using InnoNuggetPackage.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace InnoChess.Infrastructure.Repositories;
 
-public class LocationRepository(InnoChessDbContext context) : RepositoryBase<LocationEntity>(context), ILocationRepository
+public class LocationRepository(InnoChessDbContext context) : BaseRepository<LocationEntity>(context), ILocationRepository
 {
     private readonly InnoChessDbContext _context = context;
 

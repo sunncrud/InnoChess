@@ -1,10 +1,11 @@
 ﻿using InnoChess.Domain.Models;
 using InnoChess.Domain.RepositoryContracts;
+using InnoNuggetPackage.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace InnoChess.Infrastructure.Repositories;
 
-public class SessionRepository(InnoChessDbContext context) : RepositoryBase<SessionEntity>(context), ISessionRepository
+public class SessionRepository(InnoChessDbContext context) : BaseRepository<SessionEntity>(context), ISessionRepository
 {
     private readonly InnoChessDbContext _context = context;
 

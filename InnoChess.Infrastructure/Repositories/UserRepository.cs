@@ -1,11 +1,12 @@
 ﻿using InnoChess.Application.DTO;
 using InnoChess.Domain.Models;
 using InnoChess.Domain.RepositoryContracts;
+using InnoNuggetPackage.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace InnoChess.Infrastructure.Repositories;
 
-public class UserRepository(InnoChessDbContext context) : RepositoryBase<UserEntity>(context), IUserRepository
+public class UserRepository(InnoChessDbContext context) : BaseRepository<UserEntity>(context), IUserRepository
 {
     private readonly InnoChessDbContext _context = context;
 

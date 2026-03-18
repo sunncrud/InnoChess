@@ -1,11 +1,10 @@
 ﻿using InnoChess.Application.Caching;
 using InnoChess.Application.DTO.SessionDto;
 using InnoChess.Application.MappingContracts;
-using InnoChess.Application.Pagination;
 using InnoChess.Application.ServiceContracts;
 using InnoChess.Domain.Models;
 using InnoChess.Domain.RepositoryContracts;
-using Microsoft.EntityFrameworkCore;
+using InnoNuggetPackage.Services;
 
 namespace InnoChess.Application.Services;
 

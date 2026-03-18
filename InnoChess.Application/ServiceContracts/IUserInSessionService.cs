@@ -1,6 +1,5 @@
-﻿using InnoChess.Application.DTO.SessionDto;
-using InnoChess.Application.DTO.UserInGameDto;
-using InnoChess.Application.Pagination;
+﻿using InnoChess.Application.DTO.UserInGameDto;
+using InnoNuggetPackage.ServiceContracts;
 
 namespace InnoChess.Application.ServiceContracts;
 
